@@ -1,155 +1,205 @@
-/* 🌍 Base styles (Laptop / Desktop first) */
+/* 🌍 Global styles */
 body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at center, #000 70%, #111 100%);
-  color: #00f7ff;
+  font-family: 'Press Start 2P', cursive, sans-serif;
+  background: radial-gradient(circle at center, #000428, #004e92);
+  color: #fff;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding: 20px;
+  box-sizing: border-box;
+  background-image: linear-gradient(45deg, rgba(0, 200, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(-45deg, rgba(0, 200, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #00f7ff;
+  text-shadow: 0 0 10px cyan, 0 0 20px blue;
 }
 
-#grid {
-  background: rgba(0, 0, 0, 0.6);
-  border: 2px solid #00f7ff;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px #00f7ff;
-}
-
-#petContainer {
+#gameContainer {
   display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
   justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* 🐾 Pet + speech bubble + thermometer */
+#petContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 30px;
-  margin-bottom: 30px;
+  gap: 15px;
 }
 
-/* Speech bubble */
-#speechBubble {
-  background: #111;
-  border: 2px solid #00f7ff;
-  padding: 10px 15px;
-  border-radius: 10px;
-  max-width: 220px;
-  box-shadow: 0 0 10px #00f7ff;
-}
-
-/* Cat */
 #pet {
-  font-size: 80px;
-  text-shadow: 0 0 15px #00f7ff;
+  font-size: 120px;
+  text-shadow: 0 0 15px #0ff, 0 0 25px #00f;
 }
 
-/* Thermometer */
+#speechBubble {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid cyan;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 200px;
+  font-size: 14px;
+  text-shadow: 0 0 5px cyan;
+}
+
 #thermoContainer {
   width: 60px;
   height: 200px;
   background: #222;
-  border: 3px solid #fff;
   border-radius: 30px;
+  border: 3px solid cyan;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 10px cyan, inset 0 0 10px #00f;
 }
 
 #thermoMercury {
-  width: 100%;
-  background: linear-gradient(to top, red, orange);
   position: absolute;
   bottom: 0;
-  height: 25%; /* dynamically updated */
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(to top, red, orange);
   transition: height 0.5s ease-in-out;
 }
 
 #thermoNumber {
-  margin-top: 10px;
-  font-size: 16px;
+  position: absolute;
+  top: -25px;
+  width: 100%;
+  font-size: 14px;
+  color: cyan;
+  text-shadow: 0 0 5px #0ff;
 }
 
-/* Choices grid */
+/* 🎮 Question + choices */
+#questionsContainer {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid cyan;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #0ff;
+}
+
 .choices {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 15px;
-  max-width: 600px;
-  margin: 0 auto 20px auto;
+  margin-top: 20px;
 }
 
 .option-btn {
   background: #111;
-  color: #00f7ff;
+  border: 2px solid cyan;
+  border-radius: 10px;
   padding: 12px;
-  border: 2px solid #00f7ff;
-  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 10px #00f7ff;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 5px #0ff;
 }
 
 .option-btn:hover {
-  background: #00f7ff;
-  color: #111;
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 10px cyan, 0 0 20px #0ff;
 }
 
-/* Show selected choice clearly */
 .option-btn.selected {
-  background: #00f7ff;
-  color: #111;
-  font-weight: bold;
-  box-shadow: 0 0 20px #00f7ff;
+  background: lime;
+  color: black;
+  border-color: lime;
+  box-shadow: 0 0 10px lime, 0 0 20px #0f0;
 }
 
-/* End Day button */
+/* 🚀 End Day Button */
 #endDay {
-  font-size: 18px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, cyan, blue);
+  border: none;
+  border-radius: 20px;
   padding: 12px 20px;
-  border-radius: 12px;
-  background: #111;
-  color: #00f7ff;
-  border: 2px solid #00f7ff;
+  font-size: 14px;
+  color: #fff;
   cursor: pointer;
-  box-shadow: 0 0 10px #00f7ff;
-  transition: 0.3s;
+  text-shadow: 0 0 5px #000;
+  box-shadow: 0 0 10px cyan, 0 0 20px #00f;
+  transition: transform 0.2s ease;
 }
 
 #endDay:hover {
-  background: #00f7ff;
-  color: #111;
+  transform: scale(1.05);
 }
 
 /* 📱 Mobile adjustments */
 @media (max-width: 768px) {
   h1 {
-    font-size: 22px;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  #gameContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 
   #petContainer {
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
   }
 
   #pet {
-    font-size: 60px;
+    font-size: 80px;
+  }
+
+  #speechBubble {
+    max-width: 90%;
+    font-size: 12px;
+    padding: 8px 10px;
   }
 
   #thermoContainer {
-    width: 50px;
+    width: 40px;
     height: 150px;
+  }
+
+  #thermoNumber {
+    font-size: 12px;
   }
 
   .choices {
     grid-template-columns: 1fr;
-    max-width: 350px;
+    gap: 10px;
   }
 
-  button, .option-btn {
-    font-size: 16px;
-    padding: 12px;
+  .option-btn {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  #endDay {
+    width: 100%;
+    max-width: 280px;
+    font-size: 14px;
+    padding: 10px;
   }
 }
