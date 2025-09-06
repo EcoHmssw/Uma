@@ -1,136 +1,173 @@
-/* General Look */
 body {
+  font-family: 'Orbitron', sans-serif;
   margin: 0;
-  font-family: 'Orbitron', Arial, sans-serif;
-  background: radial-gradient(circle at top, #0a0a0a, #222);
-  color: #e6faff;
+  padding: 20px;
+  color: #eee;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #1a1a2e, #162447);
+  position: relative;
+}
+
+#grid {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(0deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px),
+                    repeating-linear-gradient(90deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px);
+  z-index: -2;
+  animation: moveGrid 10s linear infinite;
+}
+@keyframes moveGrid {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: -20px -20px, -20px -20px; }
+}
+
+h1 {
   text-align: center;
+  color: #00ffff;
+  text-shadow: 2px 2px 8px #0ff;
+  margin-bottom: 30px;
+  z-index: 1;
+  position: relative;
 }
 
-header {
-  padding: 1rem;
-  background: #111;
-  font-size: 2rem;
-  color: #00ffcc;
-  text-shadow: 2px 2px 8px #00ffff;
+#petContainer {
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  text-align: center;
+  z-index: 10;
+}
+#pet {
+  font-size: 120px;
+  transition: transform 0.5s, filter 0.5s;
+  filter: drop-shadow(0 0 10px #0ff);
+}
+#speechBubble {
+  position: relative;
+  background: rgba(0,255,255,0.15);
+  color: #0ff;
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  max-width: 220px;
+  opacity: 0;
+  font-size: 14px;
+  transition: opacity 0.5s;
+}
+#speechBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: rgba(0,255,255,0.15) transparent transparent transparent;
 }
 
-#game {
-  padding: 2rem 1rem;
-  max-width: 800px;
+#thermoContainer {
+  width: 50px;
+  height: 220px;
+  border-radius: 25px;
+  background: linear-gradient(to top, #111, #222);
+  border: 3px solid #0ff;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px #00ffff44;
+}
+#thermoMercury {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 25%;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(to top, green, lime);
+  transition: height 0.7s ease, background 0.7s ease, box-shadow 0.7s ease;
+}
+#thermoNumber {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 8px;
+  color: #0ff;
+  text-shadow: 1px 1px 2px #00ffffaa;
+}
+
+.choices {
+  max-width: 650px;
   margin: auto;
+  background: rgba(0,0,0,0.7);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,255,255,0.2);
+  z-index: 5;
+  position: relative;
 }
-
-/* Question blocks */
-.question-block {
-  background: rgba(0,0,0,0.6);
-  border: 2px solid #00ffcc;
-  border-radius: 12px;
-  margin: 1.5rem 0;
-  padding: 1rem;
-  box-shadow: 0 0 15px rgba(0,255,255,0.4);
-  animation: fadeIn 0.5s ease-in;
+.choices h3 {
+  margin-top: 15px;
+  color: #00ffff;
 }
-
-.question {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-/* Options */
-.options {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
 .option-btn {
-  background: #111;
-  border: 2px solid #00ffcc;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
+  display: inline-block;
+  margin: 5px 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(0,255,255,0.15);
+  color: #0ff;
   cursor: pointer;
-  transition: all 0.3s;
+  font-size: 13px;
+  transition: transform 0.3s, background 0.3s, filter 0.3s;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0,255,255,0.2);
 }
-
-.option-btn:hover {
-  background: #00ffcc;
-  color: #000;
-  box-shadow: 0 0 12px #00ffff;
-}
-
 .option-btn.selected {
-  background: #00ffcc;
+  background: rgba(0,255,255,0.5);
   color: #000;
   font-weight: bold;
-  box-shadow: 0 0 18px #00ffff;
+}
+.option-btn:hover {
+  transform: scale(1.1);
+  background: rgba(0,255,255,0.7);
+  filter: drop-shadow(0 0 10px #0ff);
 }
 
-/* Pet + Thermometer */
-#status-bar {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.8);
-  border: 2px solid #00ffcc;
+button#endDay {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  background: #0ff4;
+  border: none;
   border-radius: 12px;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  z-index: 1000;
-  box-shadow: 0 0 15px rgba(0,255,255,0.4);
-  width: 150px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,255,255,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(5px);
+  z-index: 5;
+  position: relative;
+}
+button#endDay:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,255,255,0.6);
 }
 
-.pet {
-  font-size: 2.5rem;
-  transition: transform 0.3s;
-}
-
-.thermo {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
-
-.comment {
-  font-size: 0.9rem;
-  margin-top: 0.3rem;
-  font-style: italic;
-  color: #aaffff;
-}
-
-/* Mobile layout */
+/* ---------- Responsive (Mobile) ---------- */
 @media (max-width: 768px) {
-  #status-bar {
-    top: auto;
-    bottom: 10px;
-    right: 50%;
-    transform: translateX(50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  #petContainer {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 100px;
   }
-
-  .options {
-    display: block;
-    text-align: left;
-    margin-left: 1rem;
-  }
-
   .option-btn {
-    display: block;
-    width: 90%;
-    margin: 0.5rem 0;
+    display: block;      /* Stack vertically */
+    width: 100%;
+    margin: 8px 0;
+    text-align: center;
   }
-
-  .pet {
-    font-size: 2rem;
+  .choices {
+    padding: 15px;
   }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
 }
