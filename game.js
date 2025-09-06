@@ -20,31 +20,28 @@ const questions = [
   {cat:"🚶 Fitness",q:[{t:"Walk/Run",v:0,msg:"Healthy & green 🏃‍♂️"},{t:"Gym 1 hr",v:2,msg:"Some energy 💪"},{t:"Gym 3+ hrs",v:5,msg:"More footprint 💥"}]},
   {cat:"🍬 Snacks",q:[{t:"Fruits/Nuts",v:0,msg:"Healthy & green 🍏"},{t:"Packaged snack",v:2,msg:"Some CO₂ 🌫️"},{t:"Daily junk",v:5,msg:"High carbon snack 🍭"}]}
 ];
-
 const questionsContainer = document.getElementById("questions");
 const pet = document.getElementById("pet");
 const speechBubble = document.getElementById("speechBubble");
 const thermoMercury = document.getElementById("thermoMercury");
 let currentSelections = [];
 
-// Pet whisper function
-function petWhisper(message) {
+function petWhisper(message){
   speechBubble.textContent = message;
   speechBubble.style.opacity = 1;
   pet.style.transform = "scale(1.2)";
-  setTimeout(() => { pet.style.transform = "scale(1)"; }, 300);
-  setTimeout(() => { speechBubble.style.opacity = 0; }, 2000);
+  setTimeout(()=>{ pet.style.transform = "scale(1)"; },300);
+  setTimeout(()=>{ speechBubble.style.opacity = 0; },2000);
 }
 
-// Display questions
 function displayQuestions() {
   questionsContainer.innerHTML = "";
-  questions.forEach((qblock, i) => {
+  questions.forEach((qblock,i)=>{
     const h3 = document.createElement("h3");
     h3.textContent = qblock.cat;
     questionsContainer.appendChild(h3);
 
-    qblock.q.forEach((opt) => {
+    qblock.q.forEach((opt)=>{
       const btn = document.createElement("div");
       btn.className = "option-btn";
       btn.textContent = opt.t;
@@ -52,65 +49,57 @@ function displayQuestions() {
       btn.dataset.msg = opt.msg;
       btn.dataset.cat = i;
 
-      // vertical stacked options
-      btn.style.display = "block";
-      btn.style.margin = "5px 0";
-      btn.style.fontSize = "14px"; // reduced font size
-
-      btn.onclick = () => {
+      btn.onclick = ()=>{
         const prev = document.querySelector(`.option-btn[data-cat='${i}'].selected`);
-        if (prev) prev.classList.remove("selected");
+        if(prev) prev.classList.remove("selected");
         btn.classList.add("selected");
         currentSelections[i] = opt.v;
 
         petWhisper(opt.msg);
 
-        // update thermometer
-        const totalPoints = currentSelections.reduce((a, b) => a + (b || 0), 0);
-        const heightPercent = Math.min(100, totalPoints * 1.2);
-        thermoMercury.style.height = heightPercent + "%";
+        // update thermo inside frame
+        const totalPoints = currentSelections.reduce((a,b)=>a+(b||0),0);
+        const height = Math.min(100, totalPoints*1.2);
+        thermoMercury.style.height = height+"%";
 
-        if (totalPoints < 15) thermoMercury.style.background = "green";
-        else if (totalPoints < 40) thermoMercury.style.background = "yellow";
-        else if (totalPoints < 70) thermoMercury.style.background = "orange";
-        else thermoMercury.style.background = "red";
+        if(totalPoints<15) thermoMercury.style.background="green";
+        else if(totalPoints<40) thermoMercury.style.background="yellow";
+        else if(totalPoints<70) thermoMercury.style.background="orange";
+        else thermoMercury.style.background="red";
       };
+
       questionsContainer.appendChild(btn);
     });
   });
 }
 
-// End day
-function endDay() {
-  const totalPoints = currentSelections.reduce((a, b) => a + (b || 0), 0);
-  let msg = "";
-  if (totalPoints < 15) msg = "Your pet stayed cute 🌿!";
-  else if (totalPoints < 40) msg = "Your pet is growing suspicious 👽!";
-  else if (totalPoints < 70) msg = "Your pet turned into an alien 👽!";
-  else msg = "Your monster exploded! 👹🔥";
+function endDay(){
+  const totalPoints = currentSelections.reduce((a,b)=>a+(b||0),0);
+  let msg="";
+  if(totalPoints<15) msg="Your pet stayed cute 🌿!";
+  else if(totalPoints<40) msg="Your pet is growing suspicious 👽!";
+  else if(totalPoints<70) msg="Your pet turned into an alien 👽!";
+  else msg="Your monster exploded! 👹🔥";
 
   const endMsg = document.createElement("div");
-  endMsg.id = "endMsg";
-  endMsg.innerHTML = `<h2>Day ended!</h2><p>Total CO₂ points: ${totalPoints}</p><p>${msg}</p>`;
-  endMsg.style.cssText = `
-    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.85); color: #0ff; padding: 25px; border-radius: 15px;
-    text-align: center; z-index: 9999; font-family: 'Orbitron',sans-serif;
-    box-shadow: 0 0 15px #0ff;
+  endMsg.id="endMsg";
+  endMsg.innerHTML=`<h2>Day ended!</h2><p>Total CO₂ points: ${totalPoints}</p><p>${msg}</p>`;
+  endMsg.style.cssText=`
+    position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+    background: rgba(0,0,0,0.85); color:#0ff; padding:25px; border-radius:15px;
+    text-align:center; z-index:9999; font-family:'Orbitron',sans-serif;
+    box-shadow:0 0 15px #0ff;
   `;
   document.body.appendChild(endMsg);
 
-  pet.style.transform = "scale(1.5)";
-  setTimeout(() => { pet.style.transform = "scale(1)"; }, 800);
+  pet.style.transform="scale(1.5)";
+  setTimeout(()=>{ pet.style.transform="scale(1)"; },800);
 
-  setTimeout(() => {
+  setTimeout(()=>{
     document.body.removeChild(endMsg);
     location.reload();
-  }, 5000);
+  },5000);
 }
 
-// Attach endDay
-document.getElementById("endDay").onclick = endDay;
-
-// Initialize
-window.onload = displayQuestions;
+document.getElementById("endDay").onclick=endDay;
+window.onload=displayQuestions;
