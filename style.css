@@ -1,4 +1,4 @@
-/* ---- Default: Laptop/Desktop ---- */
+/* 🌌 Global laptop/desktop style (default) */
 body {
   font-family: 'Orbitron', sans-serif;
   background: radial-gradient(circle at top, #0d1b2a, #000);
@@ -11,8 +11,10 @@ body {
 h1 {
   font-size: 32px;
   text-shadow: 0 0 12px #00f6ff;
+  margin-bottom: 20px;
 }
 
+/* 🔹 Background grid */
 #grid {
   background: repeating-linear-gradient(
     0deg,
@@ -34,21 +36,28 @@ h1 {
   z-index: -1;
 }
 
-.option-btn {
-  background: rgba(0, 0, 50, 0.8);
-  color: #00f6ff;
-  border: 2px solid #00f6ff;
-  text-shadow: 0 0 8px #00f6ff;
-  box-shadow: 0 0 15px rgba(0, 246, 255, 0.6);
-  transition: all 0.3s ease-in-out;
-  font-size: 16px;
-  padding: 12px;
-  border-radius: 12px;
+/* 🔹 Pet + Thermometer container */
+#petContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 20px auto;
 }
 
-.option-btn:hover {
-  background: rgba(0, 0, 100, 0.9);
-  box-shadow: 0 0 25px rgba(0, 246, 255, 0.9);
+#speechBubble {
+  background: rgba(0, 0, 50, 0.8);
+  border: 2px solid #00f6ff;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  text-shadow: 0 0 8px #00f6ff;
+  color: #00f6ff;
+  max-width: 220px;
+}
+
+#pet {
+  font-size: 70px;
 }
 
 #thermoContainer {
@@ -59,12 +68,11 @@ h1 {
   border-radius: 30px;
   position: relative;
   overflow: hidden;
-  margin: 10px auto;
 }
 
 #thermoMercury {
   width: 100%;
-  height: 25%; /* dynamically updated */
+  height: 25%; /* dynamic */
   background: linear-gradient(to top, #ff3300, #ff9900);
   position: absolute;
   bottom: 0;
@@ -72,28 +80,80 @@ h1 {
   border-radius: 0 0 25px 25px;
 }
 
-/* ---- Mobile Adjustments ---- */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-    font-size: 14px;
-  }
+#thermoNumber {
+  font-size: 16px;
+  margin-top: 8px;
+  text-shadow: 0 0 8px #00f6ff;
+}
 
+/* 🔹 Questions + Options */
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.option-btn {
+  background: rgba(0, 0, 50, 0.8);
+  color: #00f6ff;
+  border: 2px solid #00f6ff;
+  text-shadow: 0 0 8px #00f6ff;
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.6);
+  transition: all 0.3s ease-in-out;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  background: rgba(0, 0, 100, 0.9);
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.9);
+}
+
+/* 🔹 Selected state */
+.option-btn.selected {
+  background: #00f6ff;
+  color: #000;
+  font-weight: bold;
+}
+
+/* 🔹 End Day button */
+#endDay {
+  margin-top: 20px;
+  font-size: 18px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: #00f6ff;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.8);
+  transition: all 0.3s;
+}
+
+#endDay:hover {
+  background: #00c4cc;
+  box-shadow: 0 0 25px rgba(0, 246, 255, 1);
+}
+
+/* 🌟 Mobile Adjustments */
+@media (max-width: 768px) {
   h1 {
     font-size: 22px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   #petContainer {
     flex-direction: column;
-    align-items: center;
     gap: 10px;
-    max-width: 100%;
   }
 
   #speechBubble {
-    font-size: 13px;
-    padding: 6px 10px;
+    font-size: 12px;
     max-width: 90%;
   }
 
@@ -106,15 +166,22 @@ h1 {
     height: 140px;
   }
 
+  #thermoNumber {
+    font-size: 13px;
+  }
+
+  .choices {
+    grid-template-columns: 1fr; /* stack options */
+    max-width: 350px;
+  }
+
   .option-btn {
     font-size: 14px;
     padding: 10px;
   }
 
-  .choices {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 15px;
+  #endDay {
+    width: 100%;
+    max-width: 320px;
   }
 }
