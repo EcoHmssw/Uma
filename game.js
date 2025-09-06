@@ -1,2 +1,96 @@
-const questions=[{cat:"\uD83C\uDF72 Food",q:[{t:"Vegetarian thali",v:0,msg:"Veg is green \uD83C\uDF3F!"},{t:"Chicken biryani",v:5,msg:"Chicken adds CO₂ \uD83C\uDF2B️"},{t:"Mutton curry",v:8,msg:"Mutton has high emissions \uD83D\uDC04"}]},{cat:"\uD83D\uDE97 Travel",q:[{t:"Walk / Cycle",v:0,msg:"Walking saves CO₂ \uD83D\uDEB6‍♂️"},{t:"Bus / Metro",v:3,msg:"Public transport \uD83D\uDE87"},{t:"Auto / Car",v:7,msg:"Cars burn fuel \uD83C\uDF2B️"}]},{cat:"\uD83D\uDCF1 Digital",q:[{t:"Light phone use",v:0,msg:"Low energy \uD83D\uDC4D"},{t:"1 hr streaming",v:2,msg:"Streaming uses energy \uD83D\uDCF6"},{t:"3+ hrs binge",v:5,msg:"Heavy streaming \uD83D\uDCBB"}]},{cat:"\uD83D\uDCA1 Energy",q:[{t:"Switch off fans/lights",v:0,msg:"Energy saved \uD83C\uDF3F"},{t:"Forget to turn off",v:4,msg:"Unused energy burns \uD83D\uDCA1"},{t:"AC 6+ hrs",v:8,msg:"AC emits CO₂ ❄️"}]},{cat:"\uD83D\uDEBF Water",q:[{t:"Bucket bath",v:0,msg:"Saves energy & water \uD83D\uDCA7"},{t:"5 min shower",v:3,msg:"Short shower ok \uD83C\uDF24️"},{t:"15 min shower",v:7,msg:"Long shower = more CO₂"}]},{cat:"\uD83D\uDECD️ Shopping",q:[{t:"Cloth bag",v:0,msg:"No plastic!"},{t:"Plastic bag",v:3,msg:"Plastic adds waste \uD83C\uDF2B️"},{t:"Fast fashion buy",v:6,msg:"Fast fashion = high carbon \uD83D\uDC55"}]},{cat:"♻️ Waste",q:[{t:"Segregate waste",v:0,msg:"Recycling saves ♻️"},{t:"Throw mixed",v:4,msg:"Mixed waste ↑ CO₂"},{t:"Litter outside",v:6,msg:"Harmful to environment!"}]},{cat:"☕ Drinks",q:[{t:"Steel tumbler",v:0,msg:"No plastic! \uD83D\uDC4D"},{t:"Plastic cup",v:2,msg:"Plastic = bad \uD83C\uDF2B️"},{t:"Bottled drink",v:4,msg:"Bottled drinks add CO₂ \uD83E\uDD64"}]},{cat:"\uD83D\uDCE6 Delivery",q:[{t:"No order today",v:0,msg:"No extra CO₂"},{t:"Food delivery",v:3,msg:"Delivery adds emissions \uD83C\uDF71"},{t:"Multiple parcels",v:6,msg:"More parcels = more CO₂"}]},{cat:"\uD83D\uDCDA Study",q:[{t:"Use books/notes",v:0,msg:"Offline study saves energy \uD83D\uDCD6"},{t:"Laptop 2 hrs",v:2,msg:"Some energy use \uD83D\uDCBB"},{t:"Laptop 6+ hrs",v:5,msg:"Heavy laptop footprint"}]},{cat:"\uD83C\uDFA7 Music",q:[{t:"Radio/offline",v:0,msg:"Offline green \uD83C\uDFB5"},{t:"Streaming few songs",v:1,msg:"Some streaming ok \uD83C\uDFB6"},{t:"Streaming 5+ hrs",v:3,msg:"Heavy streaming burns \uD83D\uDCBB"}]},{cat:"\uD83E\uDD64 Beverage",q:[{t:"Home-made tea",v:0,msg:"Zero waste ☕"},{t:"Caf\xe9 takeaway",v:2,msg:"Some waste \uD83C\uDF2B️"},{t:"Caf\xe9 daily",v:4,msg:"Daily cups ↑ carbon \uD83E\uDD64"}]},{cat:"\uD83D\uDEAE Food waste",q:[{t:"Finish meal",v:0,msg:"No waste \uD83D\uDC4D"},{t:"Some leftovers",v:3,msg:"Waste resources \uD83C\uDF72"},{t:"Waste a lot",v:6,msg:"Food waste ↑ CO₂ \uD83D\uDCA5"}]},{cat:"\uD83D\uDCF4 Gadgets",q:[{t:"Switch off charger",v:0,msg:"Smart! Saves \uD83D\uDD0C"},{t:"Leave plugged",v:2,msg:"Wasted energy \uD83D\uDCA1"},{t:"Multiple gadgets",v:4,msg:"High energy ⚡"}]},{cat:"\uD83D\uDC55 Clothes care",q:[{t:"Sun-dry clothes",v:0,msg:"Energy free \uD83C\uDF1E"},{t:"Use washing machine",v:3,msg:"Some energy ⚡"},{t:"Dryer machine",v:6,msg:"High appliance use"}]},{cat:"\uD83C\uDFE0 Cooling",q:[{t:"Open windows",v:0,msg:"Natural ventilation \uD83C\uDF2C️"},{t:"Fan",v:2,msg:"Some energy \uD83D\uDCA8"},{t:"AC full night",v:8,msg:"Consumes lots ❄️"}]},{cat:"\uD83D\uDEB0 Drinking water",q:[{t:"Steel bottle refill",v:0,msg:"No plastic!"},{t:"Plastic bottle",v:2,msg:"Plastic adds CO₂ \uD83C\uDF2B️"},{t:"2+ plastic bottles",v:5,msg:"High footprint \uD83E\uDD64"}]},{cat:"\uD83C\uDFAE Gaming",q:[{t:"No gaming",v:0,msg:"Energy saved!"},{t:"1 hr gaming",v:2,msg:"Some energy \uD83C\uDFAE"},{t:"5+ hrs",v:6,msg:"High energy \uD83D\uDCBB"}]},{cat:"\uD83C\uDF19 Sleep",q:[{t:"Early sleep, lights off",v:0,msg:"Energy saver \uD83C\uDF3F"},{t:"Sleep with lights on",v:2,msg:"Lights use energy \uD83D\uDCA1"},{t:"All night lights+fan",v:5,msg:"High night energy \uD83C\uDF19"}]},{cat:"\uD83C\uDF7D️ Eating out",q:[{t:"Home-cooked meal",v:0,msg:"Best choice \uD83C\uDF3F"},{t:"Restaurant vegetarian",v:3,msg:"Some footprint \uD83C\uDF72"},{t:"Restaurant non-veg",v:7,msg:"High carbon \uD83D\uDC04"}]}],qDiv=document.getElementById("questions");questions.forEach((t,e)=>{let s=`<h3>${t.cat}</h3>`;t.q.forEach((t,a)=>{s+=`<div class="option-btn" data-cat='${e}' data-value='${t.v}' data-msg='${t.msg}' onclick='updatePet(this)'>${t.t}</div>`}),qDiv.innerHTML+=s});let currentTemp=25;function updatePet(t){let e=t.dataset.cat;parseInt(t.dataset.value),document.querySelectorAll(`.option-btn[data-cat='${e}']`).forEach(t=>t.classList.remove("selected")),t.classList.add("selected");let s=0;questions.forEach((t,e)=>{let a=document.querySelector(`.option-btn[data-cat='${e}'].selected`);a&&(s+=parseInt(a.dataset.value))});let a=document.getElementById("pet");s<15?(a.textContent="\uD83D\uDE3A",a.style.filter="drop-shadow(0 0 10px green)"):s<40?(a.textContent="\uD83D\uDE3C",a.style.filter="drop-shadow(0 0 15px yellow)"):s<70?(a.textContent="\uD83D\uDC7D",a.style.filter="drop-shadow(0 0 20px purple)"):(a.textContent="\uD83D\uDC79",a.style.filter="drop-shadow(0 0 25px red)"),a.style.transform="scale(1.3)",setTimeout(()=>{a.style.transform="scale(1)"},300),currentTemp=25+s;let o=document.getElementById("thermoMercury"),r=document.getElementById("thermoNumber"),n=Math.min((currentTemp-25)*2,100);o.style.height=n+"%",n<40?o.style.background="linear-gradient(to top, green, lime)":n<70?o.style.background="linear-gradient(to top, yellow, orange)":o.style.background="linear-gradient(to top, red, darkred)",r.textContent=currentTemp+"\xb0C";let g=document.getElementById("speechBubble");g.textContent=t.dataset.msg,g.style.opacity=1,setTimeout(()=>{g.style.opacity=0},3e3)}function endDay(){let t=0;questions.forEach((e,s)=>{let a=document.querySelector(`.option-btn[data-cat='${s}'].selected`);a&&(t+=parseInt(a.dataset.value))});let e="";alert(`Day ended! Total CO₂ points: ${t}
-${e=t<15?"Your pet stayed cute \uD83C\uDF3F!":t<40?"Your pet is growing suspicious \uD83D\uDC7D!":t<70?"Your pet turned into an alien \uD83D\uDC7D!":"Your monster exploded! \uD83D\uDC79\uD83D\uDD25"}`),location.reload()}
+const questions=[
+{cat:"🍲 Food",q:[{t:"Vegetarian thali",v:0,msg:"Veg is green 🌿!"},{t:"Chicken biryani",v:5,msg:"Chicken adds CO₂ 🌫️"},{t:"Mutton curry",v:8,msg:"Mutton has high emissions 🐄"}]},
+{cat:"🚗 Travel",q:[{t:"Walk / Cycle",v:0,msg:"Walking saves CO₂ 🚶‍♂️"},{t:"Bus / Metro",v:3,msg:"Public transport 🚇"},{t:"Auto / Car",v:7,msg:"Cars burn fuel 🌫️"}]},
+{cat:"📱 Digital",q:[{t:"Light phone use",v:0,msg:"Low energy 👍"},{t:"1 hr streaming",v:2,msg:"Streaming uses energy 📶"},{t:"3+ hrs binge",v:5,msg:"Heavy streaming 💻"}]},
+{cat:"💡 Energy",q:[{t:"Switch off fans/lights",v:0,msg:"Energy saved 🌿"},{t:"Forget to turn off",v:4,msg:"Unused energy burns 💡"},{t:"AC 6+ hrs",v:8,msg:"AC emits CO₂ ❄️"}]},
+{cat:"🚿 Water",q:[{t:"Bucket bath",v:0,msg:"Saves energy & water 💧"},{t:"5 min shower",v:3,msg:"Short shower ok 🌤️"},{t:"15 min shower",v:7,msg:"Long shower = more CO₂"}]},
+{cat:"🛍️ Shopping",q:[{t:"Cloth bag",v:0,msg:"No plastic!"},{t:"Plastic bag",v:3,msg:"Plastic adds waste 🌫️"},{t:"Fast fashion buy",v:6,msg:"Fast fashion = high carbon 👕"}]},
+{cat:"♻️ Waste",q:[{t:"Segregate waste",v:0,msg:"Recycling saves ♻️"},{t:"Throw mixed",v:4,msg:"Mixed waste ↑ CO₂"},{t:"Litter outside",v:6,msg:"Harmful to environment!"}]},
+{cat:"☕ Drinks",q:[{t:"Steel tumbler",v:0,msg:"No plastic! 👍"},{t:"Plastic cup",v:2,msg:"Plastic = bad 🌫️"},{t:"Bottled drink",v:4,msg:"Bottled drinks add CO₂ 🥤"}]},
+{cat:"📦 Delivery",q:[{t:"No order today",v:0,msg:"No extra CO₂"},{t:"Food delivery",v:3,msg:"Delivery adds emissions 🍱"},{t:"Multiple parcels",v:6,msg:"More parcels = more CO₂"}]},
+{cat:"📚 Study",q:[{t:"Use books/notes",v:0,msg:"Offline study saves energy 📖"},{t:"Laptop 2 hrs",v:2,msg:"Some energy use 💻"},{t:"Laptop 6+ hrs",v:5,msg:"Heavy laptop footprint"}]},
+{cat:"🎧 Music",q:[{t:"Radio/offline",v:0,msg:"Offline green 🎵"},{t:"Streaming few songs",v:1,msg:"Some streaming ok 🎶"},{t:"Streaming 5+ hrs",v:3,msg:"Heavy streaming burns 💻"}]},
+{cat:"🥤 Beverage",q:[{t:"Home-made tea",v:0,msg:"Zero waste ☕"},{t:"Café takeaway",v:2,msg:"Some waste 🌫️"},{t:"Café daily",v:4,msg:"Daily cups ↑ carbon 🥤"}]},
+{cat:"🚮 Food waste",q:[{t:"Finish meal",v:0,msg:"No waste 👍"},{t:"Some leftovers",v:3,msg:"Waste resources 🍲"},{t:"Waste a lot",v:6,msg:"Food waste ↑ CO₂ 💥"}]},
+{cat:"📴 Gadgets",q:[{t:"Switch off charger",v:0,msg:"Saves electricity ⚡"},{t:"Standby mode",v:2,msg:"Standby consumes 💡"},{t:"Leave on 24h",v:5,msg:"High energy use 🔌"}]},
+{cat:"🌿 Garden",q:[{t:"Plant trees",v:0,msg:"Plants clean air 🌱"},{t:"Small garden",v:1,msg:"Some green 🌳"},{t:"No plants",v:3,msg:"No carbon sink 😕"}]},
+{cat:"🚌 Commute",q:[{t:"Public bus",v:0,msg:"Eco commute 🚍"},{t:"Carpool",v:2,msg:"Better than solo 🚗"},{t:"Drive alone",v:5,msg:"Solo drive = more CO₂"}]},
+{cat:"🎁 Gifts",q:[{t:"Eco gift",v:0,msg:"Sustainable gift 🎁"},{t:"Plastic gift wrap",v:2,msg:"Plastic waste 🌫️"},{t:"High consumption gift",v:5,msg:"CO₂ heavy 🎉"}]},
+{cat:"🏠 Housing",q:[{t:"Solar/LED",v:0,msg:"Green home 🌞"},{t:"Normal electricity",v:3,msg:"Some CO₂ ⚡"},{t:"High energy use",v:6,msg:"High footprint 🏠"}]},
+{cat:"🚶 Fitness",q:[{t:"Walk/Run",v:0,msg:"Healthy & green 🏃‍♂️"},{t:"Gym 1 hr",v:2,msg:"Some energy 💪"},{t:"Gym 3+ hrs",v:5,msg:"More footprint 💥"}]},
+{cat:"🍬 Snacks",q:[{t:"Fruits/Nuts",v:0,msg:"Healthy & green 🍏"},{t:"Packaged snack",v:2,msg:"Some CO₂ 🌫️"},{t:"Daily junk",v:5,msg:"High carbon snack 🍭"}]}
+];
+
+const questionsContainer = document.getElementById("questions");
+const pet = document.getElementById("pet");
+const speechBubble = document.getElementById("speechBubble");
+const thermoMercury = document.getElementById("thermoMercury");
+let currentSelections=[];
+
+function displayQuestions(){
+  questionsContainer.innerHTML="";
+  questions.forEach((qblock,i)=>{
+    const h3=document.createElement("h3");
+    h3.textContent=qblock.cat;
+    questionsContainer.appendChild(h3);
+    qblock.q.forEach((opt,j)=>{
+      const btn=document.createElement("div");
+      btn.className="option-btn";
+      btn.textContent=opt.t;
+      btn.dataset.value=opt.v;
+      btn.dataset.msg=opt.msg;
+      btn.dataset.cat=i;
+      btn.onclick=()=>{
+        // remove previous selection
+        const prev=document.querySelector(`.option-btn[data-cat='${i}'].selected`);
+        if(prev) prev.classList.remove("selected");
+        btn.classList.add("selected");
+        currentSelections[i]=opt.v;
+
+        // show speech bubble
+        speechBubble.textContent=opt.msg;
+        speechBubble.style.opacity=1;
+        setTimeout(()=>{speechBubble.style.opacity=0;},2000);
+
+        // update thermo
+        const totalPoints=currentSelections.reduce((a,b)=>a+(b||0),0);
+        thermoMercury.style.height=Math.min(100,(25+totalPoints))+"%";
+        if(totalPoints<15) thermoMercury.style.background="green";
+        else if(totalPoints<40) thermoMercury.style.background="yellow";
+        else if(totalPoints<70) thermoMercury.style.background="orange";
+        else thermoMercury.style.background="red";
+
+        // pop pet slightly
+        pet.style.transform="scale(1.3)";
+        setTimeout(()=>{pet.style.transform="scale(1)";},300);
+      };
+      questionsContainer.appendChild(btn);
+    });
+  });
+}
+
+function endDay(){
+  const totalPoints=currentSelections.reduce((a,b)=>a+(b||0),0);
+  let msg="";
+  if(totalPoints<15) msg="Your pet stayed cute 🌿!";
+  else if(totalPoints<40) msg="Your pet is growing suspicious 👽!";
+  else if(totalPoints<70) msg="Your pet turned into an alien 👽!";
+  else msg="Your monster exploded! 👹🔥";
+
+  const endMsg=document.createElement("div");
+  endMsg.id="endMsg";
+  endMsg.innerHTML=`<h2>Day ended!</h2><p>Total CO₂ points: ${totalPoints}</p><p>${msg}</p>`;
+  endMsg.style.cssText="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:#0ff;padding:30px;border-radius:20px;text-align:center;z-index:9999;font-family:'Orbitron',sans-serif;box-shadow:0 0 20px #0ff;";
+  document.body.appendChild(endMsg);
+
+  // pet pop
+  pet.style.transform="scale(1.5)";
+  setTimeout(()=>{pet.style.transform="scale(1)";},800);
+
+  setTimeout(()=>{
+    document.body.removeChild(endMsg);
+    location.reload();
+  },5000);
+}
+
+window.onload=displayQuestions;
