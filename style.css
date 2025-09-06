@@ -1,108 +1,109 @@
-/* General look */
+/* General Reset */
 body {
-  background: linear-gradient(to bottom, #ff9900, #ff3300);
-  font-family: 'Trebuchet MS', sans-serif;
   margin: 0;
-  padding: 0;
-  color: white;
+  font-family: 'Orbitron', Arial, sans-serif;
+  background: linear-gradient(to bottom, #1a1a1a, #333);
+  color: #f0f0f0;
   text-align: center;
 }
 
-.game-title {
-  font-size: 2em;
-  margin: 1em 0;
-  font-family: "Comic Sans MS", cursive, sans-serif; /* fun font */
-}
-
-/* Game UI (cat + thermometer + temp) */
-.game-ui {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-}
-
-.pet {
-  font-size: 80px; /* emoji cat size */
-  margin-bottom: 10px;
-}
-
-.thermo {
-  width: 30px;
-  height: 150px;
-  background: #333;
-  border-radius: 20px;
-  margin: 10px 0;
-  overflow: hidden;
-  border: 2px solid white;
-}
-
-#thermo-fill {
-  width: 100%;
-  height: 20%;
-  background: limegreen;
-  transition: height 0.5s, background 0.5s;
-}
-
-#temperature {
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-/* Questions container */
-.questions {
-  margin: 180px auto 2em;
-  max-width: 700px;
-  padding: 1em;
-  background: rgba(0,0,0,0.5);
-  border-radius: 15px;
-}
-
-/* Option buttons (desktop) */
-.option-btn {
+header {
+  padding: 1rem;
   background: #222;
-  color: white;
-  border: 2px solid #555;
+  font-size: 1.8rem;
+  color: #00ffcc;
+  text-shadow: 2px 2px 5px black;
+}
+
+#game {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.question-block {
+  background: rgba(0,0,0,0.6);
+  border: 2px solid #00ffcc;
   border-radius: 12px;
-  padding: 10px 20px;
-  margin: 5px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+}
+
+.question {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Options (Laptop Default: horizontal buttons) */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  background: #444;
+  border: 2px solid #00ffcc;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  display: inline-block;
+  transition: all 0.2s;
 }
 
 .option-btn:hover {
-  background: #444;
-  transform: scale(1.05);
+  background: #00ffcc;
+  color: #000;
 }
 
-.option-btn.selected {
-  background: limegreen;
-  border-color: limegreen;
+/* Status bar (Cat + Thermometer) */
+#status-bar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid #00ffcc;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  z-index: 1000;
 }
 
-/* ===== Mobile layout ===== */
+.pet {
+  font-size: 2.5rem;
+}
+
+.thermo {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ------------------ Mobile Styles ------------------ */
 @media (max-width: 768px) {
-  .questions {
-    margin-top: 220px;
-    width: 90%;
+  #status-bar {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .options {
+    display: block; /* list format */
+    text-align: left;
+    margin-left: 1rem;
   }
 
   .option-btn {
-    display: block;        /* stack vertically */
-    width: 100%;           /* fit inside container */
-    text-align: left;      /* align text left */
-    box-sizing: border-box;
+    display: block;
+    width: 90%;
+    margin: 0.5rem 0;
   }
 
   .pet {
-    font-size: 60px;       /* smaller cat on mobile */
-  }
-
-  .thermo {
-    height: 120px;         /* shrink thermometer */
+    font-size: 2rem; /* smaller so it fits */
   }
 }
