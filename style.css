@@ -1,216 +1,155 @@
-/* 🌌 Global laptop/desktop style (default) */
-<style>
-  body {
-    font-family: 'Orbitron', sans-serif;
-    margin: 0;
-    padding: 20px;
-    color: #eee;
-    overflow-x: hidden;
-    background: linear-gradient(180deg, #1a1a2e, #162447);
-    position: relative;
-  }
-
-  #grid {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-image: repeating-linear-gradient(0deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px),
-                      repeating-linear-gradient(90deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px);
-    z-index: -2;
-    animation: moveGrid 10s linear infinite;
-  }
-  @keyframes moveGrid {
-    0% { background-position: 0 0, 0 0; }
-    100% { background-position: -20px -20px, -20px -20px; }
-  }
-
-  h1 {
-    text-align: center;
-    color: #00ffff;
-    text-shadow: 2px 2px 8px #0ff;
-    margin-bottom: 30px;
-    z-index: 1;
-    position: relative;
-  }
-  #petContainer {
-  position: relative; /* instead of fixed */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin: 20px auto;
+/* 🌍 Base styles (Laptop / Desktop first) */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #000 70%, #111 100%);
+  color: #00f7ff;
+  text-align: center;
+  padding: 20px;
 }
-  #pet {
-    font-size: 120px;
-    transition: transform 0.5s, filter 0.5s;
-    filter: drop-shadow(0 0 10px #0ff);
-  }
-  #speechBubble {
-    position: relative;
-    background: rgba(0,255,255,0.15);
-    color: #0ff;
-    padding: 10px 15px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    max-width: 220px;
-    opacity: 0;
-    font-size: 14px;
-    transition: opacity 0.5s;
-  }
-  #speechBubble::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 20px;
-    border-width: 10px 10px 0 10px;
-    border-style: solid;
-    border-color: rgba(0,255,255,0.15) transparent transparent transparent;
-  }
 
-  #thermoContainer {
-    width: 50px;
-    height: 220px;
-    border-radius: 25px;
-    background: linear-gradient(to top, #111, #222);
-    border: 3px solid #0ff;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 10px #00ffff44;
-  }
-  #thermoMercury {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 25%;
-    border-radius: 20px 20px 0 0;
-    background: linear-gradient(to top, green, lime);
-    transition: height 0.7s ease, background 0.7s ease, box-shadow 0.7s ease;
-  }
-  #thermoNumber {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 8px;
-    color: #0ff;
-    text-shadow: 1px 1px 2px #00ffffaa;
-  }
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+#grid {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00f7ff;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px #00f7ff;
+}
+
+#petContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* Speech bubble */
+#speechBubble {
+  background: #111;
+  border: 2px solid #00f7ff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 220px;
+  box-shadow: 0 0 10px #00f7ff;
+}
+
+/* Cat */
+#pet {
+  font-size: 80px;
+  text-shadow: 0 0 15px #00f7ff;
+}
+
+/* Thermometer */
+#thermoContainer {
+  width: 60px;
+  height: 200px;
+  background: #222;
+  border: 3px solid #fff;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+#thermoMercury {
+  width: 100%;
+  background: linear-gradient(to top, red, orange);
+  position: absolute;
+  bottom: 0;
+  height: 25%; /* dynamically updated */
+  transition: height 0.5s ease-in-out;
+}
+
+#thermoNumber {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Choices grid */
 .choices {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2-column on laptop */
-  gap: 12px;
-  max-width: 650px;
-  margin: 20px auto;
-  background: rgba(0,0,0,0.7);
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0,255,255,0.2);
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
 }
-  .choices h3 {
-    margin-top: 15px;
-    color: #00ffff;
-  }
-  .choices .option-btn {
-    display: inline-block;
-    margin: 5px 8px;
-    padding: 12px 18px;
-    border-radius: 12px;
-    background: rgba(0,255,255,0.15);
-    color: #0ff;
-    cursor: pointer;
-    font-size: 13px;
-    transition: transform 0.3s, background 0.3s, filter 0.3s;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(0,255,255,0.2);
-  }
-  .choices .option-btn.selected {
-    background: rgba(0,255,255,0.5);
-    color: #000;
-    font-weight: bold;
-  }
-  .choices .option-btn:hover {
-    transform: scale(1.1);
-    background: rgba(0,255,255,0.7);
-    filter: drop-shadow(0 0 10px #0ff);
-  }
 
-  button#endDay {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
-    background: #0ff4;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,255,255,0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
-    backdrop-filter: blur(5px);
-    z-index: 5;
-    position: relative;
-  }
-  button#endDay:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 14px rgba(0,255,255,0.6);
-  }
-</style>
-</head>
-<body>
-<div id="grid"></div>
+.option-btn {
+  background: #111;
+  color: #00f7ff;
+  padding: 12px;
+  border: 2px solid #00f7ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #00f7ff;
+}
 
-<h1>🔥 Carbon Monster Pet</h1>
+.option-btn:hover {
+  background: #00f7ff;
+  color: #111;
+}
 
-<div id="petContainer">
-  <div id="speechBubble"></div>
-  <div id="pet">😺</div>
-  <div id="thermoContainer">
-    <div id="thermoMercury"></div>
-  </div>
-  <div id="thermoNumber">25°C</div>
-</div>
-/* 🌟 Mobile Adjustments */
+/* Show selected choice clearly */
+.option-btn.selected {
+  background: #00f7ff;
+  color: #111;
+  font-weight: bold;
+  box-shadow: 0 0 20px #00f7ff;
+}
+
+/* End Day button */
+#endDay {
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #111;
+  color: #00f7ff;
+  border: 2px solid #00f7ff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00f7ff;
+  transition: 0.3s;
+}
+
+#endDay:hover {
+  background: #00f7ff;
+  color: #111;
+}
+
+/* 📱 Mobile adjustments */
 @media (max-width: 768px) {
   h1 {
     font-size: 22px;
-    margin-bottom: 10px;
   }
 
   #petContainer {
     flex-direction: column;
-    gap: 10px;
-  }
-
-  #speechBubble {
-    font-size: 12px;
-    max-width: 90%;
+    gap: 15px;
   }
 
   #pet {
-    font-size: 55px;
+    font-size: 60px;
   }
 
   #thermoContainer {
-    width: 45px;
-    height: 140px;
-  }
-
-  #thermoNumber {
-    font-size: 13px;
+    width: 50px;
+    height: 150px;
   }
 
   .choices {
-    grid-template-columns: 1fr; /* stack options */
+    grid-template-columns: 1fr;
     max-width: 350px;
   }
 
-  .option-btn {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  #endDay {
-    width: 100%;
-    max-width: 320px;
+  button, .option-btn {
+    font-size: 16px;
+    padding: 12px;
   }
 }
