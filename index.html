@@ -7,21 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <header class="game-header">
     <h1>🌍 Carbon Monster Pet</h1>
   </header>
 
-  <main id="game">
-    <section id="questions-container"></section>
+  <!-- Game container -->
+  <main class="game-container">
+    <!-- Cat + Thermometer -->
+    <div class="status-panel">
+      <div class="cat" id="cat">🐱</div>
+      <div class="thermo">
+        <div class="thermo-fill" id="thermoFill"></div>
+        <div class="thermo-temp" id="thermoTemp">0°C</div>
+      </div>
+    </div>
+
+    <!-- Questions -->
+    <section class="question-panel">
+      <h2 id="question">Loading question...</h2>
+      <div class="options" id="options"></div>
+    </section>
+
+    <!-- Pet speech bubble -->
+    <div class="speech" id="speech">Hi, I’m your carbon monster pet!</div>
   </main>
 
-  <!-- Pet + Thermometer -->
-  <aside id="status-bar">
-    <div class="pet" id="pet">😺</div>
-    <div class="thermo">🌡️ <span id="temperature">20°C</span></div>
-    <div class="comment" id="comment">Purr... let's start!</div>
-  </aside>
-
-  <script src="game.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
