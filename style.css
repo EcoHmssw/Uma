@@ -1,145 +1,174 @@
 /* 🌌 Global laptop/desktop style (default) */
-body {
-  font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at top, #0d1b2a, #000);
-  color: #e0f7fa;
-  margin: 0;
-  padding: 20px;
-  text-align: center;
-}
+<style>
+  body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #eee;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #1a1a2e, #162447);
+    position: relative;
+  }
 
-h1 {
-  font-size: 32px;
-  text-shadow: 0 0 12px #00f6ff;
-  margin-bottom: 20px;
-}
+  #grid {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(0deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px),
+                      repeating-linear-gradient(90deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px);
+    z-index: -2;
+    animation: moveGrid 10s linear infinite;
+  }
+  @keyframes moveGrid {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: -20px -20px, -20px -20px; }
+  }
 
-/* 🔹 Background grid */
-#grid {
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 246, 255, 0.1) 0px,
-    rgba(0, 246, 255, 0.1) 2px,
-    transparent 2px,
-    transparent 40px
-  ),
-  repeating-linear-gradient(
-    90deg,
-    rgba(0, 246, 255, 0.1) 0px,
-    rgba(0, 246, 255, 0.1) 2px,
-    transparent 2px,
-    transparent 40px
-  );
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-}
+  h1 {
+    text-align: center;
+    color: #00ffff;
+    text-shadow: 2px 2px 8px #0ff;
+    margin-bottom: 30px;
+    z-index: 1;
+    position: relative;
+  }
 
-/* 🔹 Pet + Thermometer container */
-#petContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  margin: 20px auto;
-}
+  #petContainer {
+    position: fixed;
+    right: 30px;
+    top: 80px;
+    text-align: center;
+    z-index: 10;
+  }
+  #pet {
+    font-size: 120px;
+    transition: transform 0.5s, filter 0.5s;
+    filter: drop-shadow(0 0 10px #0ff);
+  }
+  #speechBubble {
+    position: relative;
+    background: rgba(0,255,255,0.15);
+    color: #0ff;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    max-width: 220px;
+    opacity: 0;
+    font-size: 14px;
+    transition: opacity 0.5s;
+  }
+  #speechBubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 10px 10px 0 10px;
+    border-style: solid;
+    border-color: rgba(0,255,255,0.15) transparent transparent transparent;
+  }
 
-#speechBubble {
-  background: rgba(0, 0, 50, 0.8);
-  border: 2px solid #00f6ff;
-  padding: 10px 15px;
-  border-radius: 12px;
-  font-size: 14px;
-  text-shadow: 0 0 8px #00f6ff;
-  color: #00f6ff;
-  max-width: 220px;
-}
+  #thermoContainer {
+    width: 50px;
+    height: 220px;
+    border-radius: 25px;
+    background: linear-gradient(to top, #111, #222);
+    border: 3px solid #0ff;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px #00ffff44;
+  }
+  #thermoMercury {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 25%;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(to top, green, lime);
+    transition: height 0.7s ease, background 0.7s ease, box-shadow 0.7s ease;
+  }
+  #thermoNumber {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 8px;
+    color: #0ff;
+    text-shadow: 1px 1px 2px #00ffffaa;
+  }
 
-#pet {
-  font-size: 70px;
-}
+  .choices {
+    max-width: 650px;
+    margin: auto;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,255,255,0.2);
+    z-index: 5;
+    position: relative;
+  }
+  .choices h3 {
+    margin-top: 15px;
+    color: #00ffff;
+  }
+  .choices .option-btn {
+    display: inline-block;
+    margin: 5px 8px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: rgba(0,255,255,0.15);
+    color: #0ff;
+    cursor: pointer;
+    font-size: 13px;
+    transition: transform 0.3s, background 0.3s, filter 0.3s;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0,255,255,0.2);
+  }
+  .choices .option-btn.selected {
+    background: rgba(0,255,255,0.5);
+    color: #000;
+    font-weight: bold;
+  }
+  .choices .option-btn:hover {
+    transform: scale(1.1);
+    background: rgba(0,255,255,0.7);
+    filter: drop-shadow(0 0 10px #0ff);
+  }
 
-#thermoContainer {
-  width: 60px;
-  height: 200px;
-  background: #111;
-  border: 3px solid #00f6ff;
-  border-radius: 30px;
-  position: relative;
-  overflow: hidden;
-}
+  button#endDay {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    background: #0ff4;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,255,255,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(5px);
+    z-index: 5;
+    position: relative;
+  }
+  button#endDay:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0,255,255,0.6);
+  }
+</style>
+</head>
+<body>
+<div id="grid"></div>
 
-#thermoMercury {
-  width: 100%;
-  height: 25%; /* dynamic */
-  background: linear-gradient(to top, #ff3300, #ff9900);
-  position: absolute;
-  bottom: 0;
-  transition: height 0.5s ease-in-out;
-  border-radius: 0 0 25px 25px;
-}
+<h1>🔥 Carbon Monster Pet</h1>
 
-#thermoNumber {
-  font-size: 16px;
-  margin-top: 8px;
-  text-shadow: 0 0 8px #00f6ff;
-}
-
-/* 🔹 Questions + Options */
-.choices {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  max-width: 700px;
-  margin: 20px auto;
-}
-
-.option-btn {
-  background: rgba(0, 0, 50, 0.8);
-  color: #00f6ff;
-  border: 2px solid #00f6ff;
-  text-shadow: 0 0 8px #00f6ff;
-  box-shadow: 0 0 15px rgba(0, 246, 255, 0.6);
-  transition: all 0.3s ease-in-out;
-  font-size: 16px;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.option-btn:hover {
-  background: rgba(0, 0, 100, 0.9);
-  box-shadow: 0 0 25px rgba(0, 246, 255, 0.9);
-}
-
-/* 🔹 Selected state */
-.option-btn.selected {
-  background: #00f6ff;
-  color: #000;
-  font-weight: bold;
-}
-
-/* 🔹 End Day button */
-#endDay {
-  margin-top: 20px;
-  font-size: 18px;
-  padding: 14px 20px;
-  border-radius: 14px;
-  background: #00f6ff;
-  color: #000;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 246, 255, 0.8);
-  transition: all 0.3s;
-}
-
-#endDay:hover {
-  background: #00c4cc;
-  box-shadow: 0 0 25px rgba(0, 246, 255, 1);
-}
-
+<div id="petContainer">
+  <div id="speechBubble"></div>
+  <div id="pet">😺</div>
+  <div id="thermoContainer">
+    <div id="thermoMercury"></div>
+  </div>
+  <div id="thermoNumber">25°C</div>
+</div>
 /* 🌟 Mobile Adjustments */
 @media (max-width: 768px) {
   h1 {
