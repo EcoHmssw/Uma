@@ -7,20 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 class="game-title">🌍 Carbon Monster Pet</h1>
+  <header>
+    <h1>🌍 Carbon Monster Pet</h1>
+  </header>
 
-  <!-- Fixed UI -->
-  <div class="game-ui">
+  <main id="game">
+    <section id="questions-container"></section>
+  </main>
+
+  <!-- Pet + Thermometer -->
+  <aside id="status-bar">
     <div class="pet">🐱</div>
-    <div class="thermo">
-      <div id="thermo-fill"></div>
-    </div>
-    <div id="temperature">20°C</div>
-  </div>
+    <div class="thermo">🌡️ <span id="temperature">20°C</span></div>
+  </aside>
 
-  <!-- Questions container -->
-  <div class="questions" id="questionsContainer"></div>
-
-  <script src="script.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
