@@ -1,1 +1,178 @@
-body{font-family:'Orbitron',sans-serif;margin:0;padding:10px;color:#eee;overflow-x:hidden;background:linear-gradient(180deg,#1a1a2e,#162447);position:relative}#grid{position:fixed;width:100%;height:100%;background-image:repeating-linear-gradient(0deg,rgba(0,255,255,0.05) 0,rgba(0,255,255,0.05) 1px,transparent 1px,transparent 20px),repeating-linear-gradient(90deg,rgba(0,255,255,0.05) 0,rgba(0,255,255,0.05) 1px,transparent 1px,transparent 20px);z-index:-2;animation:moveGrid 10s linear infinite}@keyframes moveGrid{0%{background-position:0 0,0 0}100%{background-position:-20px -20px,-20px -20px}}h1{text-align:center;color:#00ffff;text-shadow:2px 2px 8px #0ff;margin-bottom:30px;z-index:1;position:relative;font-size:1.8em}#petContainer{position:fixed;right:10px;top:60px;text-align:center;z-index:10}#pet{font-size:80px;transition:transform 0.5s,filter 0.5s;filter:drop-shadow(0 0 10px #0ff)}#speechBubble{position:relative;background:rgba(0,255,255,0.15);color:#0ff;padding:10px 15px;border-radius:15px;margin-bottom:15px;max-width:220px;opacity:0;font-size:14px;transition:opacity 0.5s}#speechBubble::after{content:'';position:absolute;bottom:-10px;left:20px;border-width:10px 10px 0 10px;border-style:solid;border-color:rgba(0,255,255,0.15) transparent transparent transparent}#thermoContainer{width:40px;height:160px;border-radius:25px;background:linear-gradient(to top,#111,#222);border:3px solid #0ff;margin:15px auto;position:relative;overflow:hidden;box-shadow:inset 0 0 10px #00ffff44}#thermoMercury{width:100%;position:absolute;bottom:0;height:25%;border-radius:20px 20px 0 0;background:linear-gradient(to top,green,lime);transition:height 0.7s ease,background 0.7s ease,box-shadow 0.7s ease}#thermoNumber{text-align:center;font-weight:bold;margin-top:8px;color:#0ff;text-shadow:1px 1px 2px #00ffffaa}.choices{max-width:95%;margin:auto;background:rgba(0,0,0,0.7);padding:15px;border-radius:15px;box-shadow:0 6px 12px rgba(0,255,255,0.2);z-index:5;position:relative}.choices h3{margin-top:15px;color:#00ffff}.choices .option-btn{display:inline-block;margin:5px 8px;padding:10px 14px;border-radius:12px;background:rgba(0,255,255,0.15);color:#0ff;cursor:pointer;font-size:12px;transition:transform 0.3s,background 0.3s,filter 0.3s;backdrop-filter:blur(5px);border:1px solid rgba(0,255,255,0.2)}.choices .option-btn.selected{background:rgba(0,255,255,0.5);color:#000;font-weight:bold}.choices .option-btn:hover{transform:scale(1.1);background:rgba(0,255,255,0.7);filter:drop-shadow(0 0 10px #0ff)}button#endDay{display:block;margin:30px auto;padding:12px 25px;font-size:16px;font-weight:bold;color:#000;background:#0ff4;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 10px rgba(0,255,255,0.4);transition:transform 0.3s,box-shadow 0.3s;backdrop-filter:blur(5px);z-index:5;position:relative}button#endDay:hover{transform:scale(1.05);box-shadow:0 6px 14px rgba(0,255,255,0.6)}@media(max-width:600px){.choices .option-btn{display:block;width:100%;margin:5px 0}#petContainer{position:relative;top:auto;right:auto;margin:10px auto;text-align:center}#thermoContainer{margin:15px auto}}
+/* GENERAL BODY */
+body {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 10px;
+  color: #eee;
+  background: linear-gradient(180deg, #1a1a2e, #162447);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* BACKGROUND GRID */
+#grid {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(0deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px),
+                    repeating-linear-gradient(90deg, rgba(0,255,255,0.05) 0, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 20px);
+  z-index: -2;
+  animation: moveGrid 10s linear infinite;
+}
+@keyframes moveGrid {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: -20px -20px, -20px -20px; }
+}
+
+/* HEADER */
+h1 {
+  text-align: center;
+  color: #00ffff;
+  text-shadow: 2px 2px 8px #0ff;
+  margin-bottom: 20px;
+  z-index: 1;
+  position: relative;
+  font-size: 1.8em;
+}
+
+/* PET & THERMOMETER CONTAINER */
+#petContainer {
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+#pet {
+  font-size: 90px;
+  transition: transform 0.3s, filter 0.3s;
+  filter: drop-shadow(0 0 10px #0ff);
+}
+#speechBubble {
+  position: relative;
+  background: rgba(0,255,255,0.15);
+  color: #0ff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 180px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+#speechBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 15px;
+  border-width: 8px 8px 0 8px;
+  border-style: solid;
+  border-color: rgba(0,255,255,0.15) transparent transparent transparent;
+}
+
+/* THERMOMETER */
+#thermoContainer {
+  width: 40px;
+  height: 180px;
+  border-radius: 20px;
+  background: linear-gradient(to top, #111, #222);
+  border: 2px solid #0ff;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px #00ffff44;
+}
+#thermoMercury {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 25%;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(to top, green, lime);
+  transition: height 0.6s ease, background 0.6s ease;
+}
+#thermoNumber {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #0ff;
+  text-shadow: 1px 1px 2px #00ffffaa;
+  font-size: 12px;
+}
+
+/* QUESTIONS CONTAINER */
+.choices {
+  max-width: 90%;
+  margin: 20px auto;
+  background: rgba(0,0,0,0.75);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,255,255,0.2);
+}
+.choices h3 {
+  margin-top: 10px;
+  color: #00ffff;
+  font-size: 1em;
+}
+.choices .option-btn {
+  display: inline-block;
+  margin: 4px 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0,255,255,0.15);
+  color: #0ff;
+  cursor: pointer;
+  font-size: 12px;
+  transition: transform 0.2s, background 0.2s, filter 0.2s;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,255,255,0.2);
+}
+.choices .option-btn.selected {
+  background: rgba(0,255,255,0.5);
+  color: #000;
+  font-weight: bold;
+}
+.choices .option-btn:hover {
+  transform: scale(1.05);
+  background: rgba(0,255,255,0.7);
+  filter: drop-shadow(0 0 10px #0ff);
+}
+
+/* END DAY BUTTON */
+button#endDay {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  background: #0ff4;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,255,255,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(5px);
+}
+button#endDay:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,255,255,0.6);
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 600px) {
+  #petContainer {
+    right: 5px;
+    top: 60px;
+    gap: 10px;
+  }
+  #pet { font-size: 70px; }
+  #thermoContainer { width: 30px; height: 140px; }
+  #thermoNumber { font-size: 11px; }
+  .choices { padding: 10px; }
+  .choices h3 { font-size: 0.9em; }
+  .choices .option-btn { font-size: 11px; padding: 8px 10px; }
+  button#endDay { font-size: 13px; padding: 8px 16px; }
+}
