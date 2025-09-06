@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carbon Monster Pet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="grid"></div>
+  <h1 class="game-title">🌍 Carbon Monster Pet</h1>
 
-  <h1>🔥 Carbon Monster Pet</h1>
-
-  <div id="petContainer">
-    <div id="speechBubble"></div>
-    <div id="pet">😺</div>
-    <div id="thermoContainer">
-      <div id="thermoMercury"></div>
+  <div class="game-ui">
+    <img src="cat.png" class="pet" alt="Pet">
+    <div class="thermo">
+      <div id="thermo-fill"></div>
     </div>
-    <div id="thermoNumber">25°C</div>
+    <div id="temperature">20°C</div>
   </div>
 
-  <div class="choices" id="questions"></div>
-  <button id="endDay" onclick="endDay()">End Day</button>
+  <div class="questions" id="questionsContainer"></div>
 
-  <script src="game.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
