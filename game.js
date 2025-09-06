@@ -26,7 +26,7 @@ const tempDisplay = document.getElementById("temperature");
 
 let temperature = 20;
 
-// Render questions
+// Render all questions
 questions.forEach((item, i) => {
   const block = document.createElement("div");
   block.className = "question-block";
@@ -42,10 +42,12 @@ questions.forEach((item, i) => {
     const btn = document.createElement("button");
     btn.className = "option-btn";
     btn.textContent = opt;
+
     btn.onclick = () => {
       temperature += 1;
       tempDisplay.textContent = temperature + "°C";
     };
+
     optsDiv.appendChild(btn);
   });
 
