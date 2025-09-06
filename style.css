@@ -115,36 +115,95 @@ h1 {
   background: #ff6600;
 }
 
-/* 🔹 Mobile layout (fix overlaps) */
+/* 🔹 Mobile layout improvements */
 @media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
   #petContainer {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    position: sticky;
-    top: 0;
-    background: #1a1a2e;
-    padding: 10px 0;
-    z-index: 1000;
-  }
-
-  #pet {
-    font-size: 60px; /* smaller cat */
-  }
-
-  .choices {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .option-btn {
+    gap: 15px; /* space between pet, bubble, thermo */
+    margin: 0 auto;
     width: 100%;
-    text-align: left;
+    max-width: 350px;
   }
 
   #speechBubble {
-    font-size: 0.9rem;
-    max-width: 90%;
+    font-size: 14px;
+    padding: 8px 12px;
+    max-width: 80%;
+    text-align: center;
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  #pet {
+    font-size: 60px; /* slightly bigger so it stands out */
+    text-align: center;
+  }
+
+ 
+  #thermoContainer {
+    width: 50px;       /* smaller for mobile */
+    height: 160px;     /* compact vertical */
+    background: #222;
+    border: 3px solid #fff;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  #thermoMercury {
+    width: 100%;
+    background: linear-gradient(to top, red, orange);
+    position: absolute;
+    bottom: 0;
+    height: 25%; /* dynamically updated */
+    transition: height 0.5s ease-in-out;
+  }
+
+  #thermoNumber {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+
+  .choices {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  #endDay {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 320px;
   }
 }
