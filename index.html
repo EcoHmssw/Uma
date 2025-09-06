@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carbon Monster Pet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="game-header">
-    <h1>🌍 Carbon Monster Pet</h1>
-  </header>
+  <div id="grid"></div>
 
-  <!-- Game container -->
-  <main class="game-container">
-    <!-- Cat + Thermometer -->
-    <div class="status-panel">
-      <div class="cat" id="cat">🐱</div>
-      <div class="thermo">
-        <div class="thermo-fill" id="thermoFill"></div>
-        <div class="thermo-temp" id="thermoTemp">0°C</div>
-      </div>
+  <h1>🔥 Carbon Monster Pet</h1>
+
+  <div id="petContainer">
+    <div id="speechBubble"></div>
+    <div id="pet">😺</div>
+    <div id="thermoContainer">
+      <div id="thermoMercury"></div>
     </div>
+    <div id="thermoNumber">25°C</div>
+  </div>
 
-    <!-- Questions -->
-    <section class="question-panel">
-      <h2 id="question">Loading question...</h2>
-      <div class="options" id="options"></div>
-    </section>
+  <div class="choices" id="questions"></div>
+  <button id="endDay" onclick="endDay()">End Day</button>
 
-    <!-- Pet speech bubble -->
-    <div class="speech" id="speech">Hi, I’m your carbon monster pet!</div>
-  </main>
-
-  <script src="script.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
