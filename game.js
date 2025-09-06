@@ -1,3 +1,4 @@
+console.log("Updated game.js loaded!");
 const questions = [
   {cat:"🍲 Food",q:[{t:"Vegetarian thali",v:0,msg:"Veg is green 🌿!"},{t:"Chicken biryani",v:5,msg:"Chicken adds CO₂ 🌫️"},{t:"Mutton curry",v:8,msg:"Mutton has high emissions 🐄"}]},
   {cat:"🚗 Travel",q:[{t:"Walk / Cycle",v:0,msg:"Walking saves CO₂ 🚶‍♂️"},{t:"Bus / Metro",v:3,msg:"Public transport 🚇"},{t:"Auto / Car",v:7,msg:"Cars burn fuel 🌫️"}]},
@@ -103,3 +104,4 @@ function endDay(){
 
 document.getElementById("endDay").onclick=endDay;
 window.onload=displayQuestions;
+
