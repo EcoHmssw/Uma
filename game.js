@@ -23,8 +23,17 @@ const questions = [
 
 const container = document.getElementById("questions-container");
 const tempDisplay = document.getElementById("temperature");
+const pet = document.getElementById("pet");
+const comment = document.getElementById("comment");
 
 let temperature = 20;
+
+const expressions = [
+  { temp: 22, face: "😺", msg: "Purr... nice choice!" },
+  { temp: 28, face: "😐", msg: "Hmm, it's getting warmer..." },
+  { temp: 35, face: "😾", msg: "Too hot! I'm not happy!" },
+  { temp: 40, face: "🔥", msg: "I'm burning up! Help!" }
+];
 
 // Render all questions
 questions.forEach((item, i) => {
@@ -44,8 +53,24 @@ questions.forEach((item, i) => {
     btn.textContent = opt;
 
     btn.onclick = () => {
-      temperature += 1;
+      // remove previous selection in this block
+      optsDiv.querySelectorAll(".option-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+
+      // update temperature
+      temperature += Math.floor(Math.random() * 3); // +0, +1, +2
       tempDisplay.textContent = temperature + "°C";
+
+      // update pet face + comment
+      let mood = expressions.find(e => temperature <= e.temp);
+      if (!mood) mood = expressions[expressions.length - 1];
+
+      pet.textContent = mood.face;
+      comment.textContent = mood.msg;
+
+      // animate pet
+      pet.style.transform = "scale(1.2)";
+      setTimeout(() => pet.style.transform = "scale(1)", 300);
     };
 
     optsDiv.appendChild(btn);
