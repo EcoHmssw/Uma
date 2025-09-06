@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset + General */
 body {
   margin: 0;
   font-family: 'Orbitron', Arial, sans-serif;
@@ -21,6 +21,7 @@ header {
   margin: auto;
 }
 
+/* Question blocks */
 .question-block {
   background: rgba(0,0,0,0.6);
   border: 2px solid #00ffcc;
@@ -34,7 +35,7 @@ header {
   margin-bottom: 1rem;
 }
 
-/* Options (Laptop Default: horizontal buttons) */
+/* Options – Default Laptop Style */
 .options {
   display: flex;
   justify-content: center;
@@ -57,7 +58,7 @@ header {
   color: #000;
 }
 
-/* Status bar (Cat + Thermometer) */
+/* Pet + Thermometer container */
 #status-bar {
   position: fixed;
   top: 10px;
@@ -92,7 +93,7 @@ header {
   }
 
   .options {
-    display: block; /* list format */
+    display: block; /* vertical list */
     text-align: left;
     margin-left: 1rem;
   }
@@ -104,6 +105,6 @@ header {
   }
 
   .pet {
-    font-size: 2rem; /* smaller so it fits */
+    font-size: 2rem; /* shrink cat emoji */
   }
 }
