@@ -1,5 +1,3 @@
-// --- Full game.js ---
-
 const questions = [
   {cat:"🍲 Food",q:[{t:"Vegetarian thali",v:0,msg:"Veg is green 🌿!"},{t:"Chicken biryani",v:5,msg:"Chicken adds CO₂ 🌫️"},{t:"Mutton curry",v:8,msg:"Mutton has high emissions 🐄"}]},
   {cat:"🚗 Travel",q:[{t:"Walk / Cycle",v:0,msg:"Walking saves CO₂ 🚶‍♂️"},{t:"Bus / Metro",v:3,msg:"Public transport 🚇"},{t:"Auto / Car",v:7,msg:"Cars burn fuel 🌫️"}]},
@@ -29,16 +27,16 @@ const speechBubble = document.getElementById("speechBubble");
 const thermoMercury = document.getElementById("thermoMercury");
 let currentSelections = [];
 
-// --- Pet whisper function ---
+// Pet whisper function
 function petWhisper(message) {
   speechBubble.textContent = message;
   speechBubble.style.opacity = 1;
-  pet.style.transform = "scale(1.3)";
+  pet.style.transform = "scale(1.2)";
   setTimeout(() => { pet.style.transform = "scale(1)"; }, 300);
   setTimeout(() => { speechBubble.style.opacity = 0; }, 2000);
 }
 
-// --- Display all questions ---
+// Display questions
 function displayQuestions() {
   questionsContainer.innerHTML = "";
   questions.forEach((qblock, i) => {
@@ -54,32 +52,35 @@ function displayQuestions() {
       btn.dataset.msg = opt.msg;
       btn.dataset.cat = i;
 
+      // vertical stacked options
+      btn.style.display = "block";
+      btn.style.margin = "5px 0";
+      btn.style.fontSize = "14px"; // reduced font size
+
       btn.onclick = () => {
-        // remove previous selection
         const prev = document.querySelector(`.option-btn[data-cat='${i}'].selected`);
         if (prev) prev.classList.remove("selected");
         btn.classList.add("selected");
         currentSelections[i] = opt.v;
 
-        // pet whisper
         petWhisper(opt.msg);
 
         // update thermometer
         const totalPoints = currentSelections.reduce((a, b) => a + (b || 0), 0);
-        const heightPercent = Math.min(100, ((totalPoints) * 1.2)); // scale for better fill
+        const heightPercent = Math.min(100, totalPoints * 1.2);
         thermoMercury.style.height = heightPercent + "%";
 
-        if (totalPoints < 15) thermoMercury.style.background = "linear-gradient(to top, green, lime)";
-        else if (totalPoints < 40) thermoMercury.style.background = "linear-gradient(to top, yellow, orange)";
-        else if (totalPoints < 70) thermoMercury.style.background = "linear-gradient(to top, orange, red)";
-        else thermoMercury.style.background = "linear-gradient(to top, red, darkred)";
+        if (totalPoints < 15) thermoMercury.style.background = "green";
+        else if (totalPoints < 40) thermoMercury.style.background = "yellow";
+        else if (totalPoints < 70) thermoMercury.style.background = "orange";
+        else thermoMercury.style.background = "red";
       };
       questionsContainer.appendChild(btn);
     });
   });
 }
 
-// --- End day function ---
+// End day
 function endDay() {
   const totalPoints = currentSelections.reduce((a, b) => a + (b || 0), 0);
   let msg = "";
@@ -93,13 +94,12 @@ function endDay() {
   endMsg.innerHTML = `<h2>Day ended!</h2><p>Total CO₂ points: ${totalPoints}</p><p>${msg}</p>`;
   endMsg.style.cssText = `
     position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.85); color: #0ff; padding: 30px; border-radius: 20px;
-    text-align: center; z-index: 9999; font-family: 'Orbitron', sans-serif;
-    box-shadow: 0 0 20px #0ff;
+    background: rgba(0,0,0,0.85); color: #0ff; padding: 25px; border-radius: 15px;
+    text-align: center; z-index: 9999; font-family: 'Orbitron',sans-serif;
+    box-shadow: 0 0 15px #0ff;
   `;
   document.body.appendChild(endMsg);
 
-  // pet pop
   pet.style.transform = "scale(1.5)";
   setTimeout(() => { pet.style.transform = "scale(1)"; }, 800);
 
@@ -109,8 +109,8 @@ function endDay() {
   }, 5000);
 }
 
-// --- Attach endDay to button ---
+// Attach endDay
 document.getElementById("endDay").onclick = endDay;
 
-// --- Initialize questions on load ---
+// Initialize
 window.onload = displayQuestions;
