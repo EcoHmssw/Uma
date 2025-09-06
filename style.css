@@ -1,3 +1,4 @@
+/* General look */
 body {
   background: linear-gradient(to bottom, #ff9900, #ff3300);
   font-family: 'Trebuchet MS', sans-serif;
@@ -10,8 +11,10 @@ body {
 .game-title {
   font-size: 2em;
   margin: 1em 0;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* fun font */
 }
 
+/* Game UI (cat + thermometer + temp) */
 .game-ui {
   position: fixed;
   top: 10px;
@@ -23,9 +26,8 @@ body {
 }
 
 .pet {
-  width: 120px;
-  max-width: 25vw; /* scale better on small screens */
-  height: auto;
+  font-size: 80px; /* emoji cat size */
+  margin-bottom: 10px;
 }
 
 .thermo {
@@ -50,6 +52,7 @@ body {
   margin-top: 5px;
 }
 
+/* Questions container */
 .questions {
   margin: 180px auto 2em;
   max-width: 700px;
@@ -58,6 +61,7 @@ body {
   border-radius: 15px;
 }
 
+/* Option buttons (desktop) */
 .option-btn {
   background: #222;
   color: white;
@@ -80,7 +84,7 @@ body {
   border-color: limegreen;
 }
 
-/* ===== MOBILE FIXES ===== */
+/* ===== Mobile layout ===== */
 @media (max-width: 768px) {
   .questions {
     margin-top: 220px;
@@ -90,12 +94,15 @@ body {
   .option-btn {
     display: block;        /* stack vertically */
     width: 100%;           /* fit inside container */
-    text-align: left;      /* align text to left */
+    text-align: left;      /* align text left */
     box-sizing: border-box;
   }
 
   .pet {
-    width: 90px;           /* smaller cat */
-    max-width: 20vw;
+    font-size: 60px;       /* smaller cat on mobile */
+  }
+
+  .thermo {
+    height: 120px;         /* shrink thermometer */
   }
 }
