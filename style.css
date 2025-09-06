@@ -32,14 +32,14 @@
     z-index: 1;
     position: relative;
   }
-
   #petContainer {
-    position: fixed;
-    right: 30px;
-    top: 80px;
-    text-align: center;
-    z-index: 10;
-  }
+  position: relative; /* instead of fixed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px auto;
+}
   #pet {
     font-size: 120px;
     transition: transform 0.5s, filter 0.5s;
@@ -94,17 +94,17 @@
     color: #0ff;
     text-shadow: 1px 1px 2px #00ffffaa;
   }
-
-  .choices {
-    max-width: 650px;
-    margin: auto;
-    background: rgba(0,0,0,0.7);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0,255,255,0.2);
-    z-index: 5;
-    position: relative;
-  }
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2-column on laptop */
+  gap: 12px;
+  max-width: 650px;
+  margin: 20px auto;
+  background: rgba(0,0,0,0.7);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,255,255,0.2);
+}
   .choices h3 {
     margin-top: 15px;
     color: #00ffff;
