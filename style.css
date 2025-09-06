@@ -1,18 +1,18 @@
-/* Reset + General */
+/* General Look */
 body {
   margin: 0;
   font-family: 'Orbitron', Arial, sans-serif;
-  background: linear-gradient(to bottom, #1a1a1a, #333);
-  color: #f0f0f0;
+  background: radial-gradient(circle at top, #0a0a0a, #222);
+  color: #e6faff;
   text-align: center;
 }
 
 header {
   padding: 1rem;
-  background: #222;
-  font-size: 1.8rem;
+  background: #111;
+  font-size: 2rem;
   color: #00ffcc;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 8px #00ffff;
 }
 
 #game {
@@ -28,6 +28,8 @@ header {
   border-radius: 12px;
   margin: 1.5rem 0;
   padding: 1rem;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4);
+  animation: fadeIn 0.5s ease-in;
 }
 
 .question {
@@ -35,7 +37,7 @@ header {
   margin-bottom: 1rem;
 }
 
-/* Options – Default Laptop Style */
+/* Options */
 .options {
   display: flex;
   justify-content: center;
@@ -44,35 +46,46 @@ header {
 }
 
 .option-btn {
-  background: #444;
+  background: #111;
   border: 2px solid #00ffcc;
   color: #fff;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 
 .option-btn:hover {
   background: #00ffcc;
   color: #000;
+  box-shadow: 0 0 12px #00ffff;
 }
 
-/* Pet + Thermometer container */
+.option-btn.selected {
+  background: #00ffcc;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 18px #00ffff;
+}
+
+/* Pet + Thermometer */
 #status-bar {
   position: fixed;
   top: 10px;
   right: 10px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
   border: 2px solid #00ffcc;
   border-radius: 12px;
   padding: 0.5rem 1rem;
   text-align: center;
   z-index: 1000;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4);
+  width: 150px;
 }
 
 .pet {
   font-size: 2.5rem;
+  transition: transform 0.3s;
 }
 
 .thermo {
@@ -80,7 +93,14 @@ header {
   font-size: 1rem;
 }
 
-/* ------------------ Mobile Styles ------------------ */
+.comment {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  font-style: italic;
+  color: #aaffff;
+}
+
+/* Mobile layout */
 @media (max-width: 768px) {
   #status-bar {
     top: auto;
@@ -88,12 +108,12 @@ header {
     right: 50%;
     transform: translateX(50%);
     display: flex;
-    gap: 1rem;
-    padding: 0.5rem 1rem;
+    flex-direction: column;
+    align-items: center;
   }
 
   .options {
-    display: block; /* vertical list */
+    display: block;
     text-align: left;
     margin-left: 1rem;
   }
@@ -105,6 +125,12 @@ header {
   }
 
   .pet {
-    font-size: 2rem; /* shrink cat emoji */
+    font-size: 2rem;
   }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
