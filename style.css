@@ -171,25 +171,25 @@ button#endDay:hover {
 
 /* ===== Mobile adjustments ===== */
 @media screen and (max-width: 768px){
-  #petContainer{
-    position: sticky;
-    top: 10px;
-    right: 15px;   /* further right */
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+ #petContainer{
+  position: sticky;
+  top: 40px;   /* moved further down from the title */
+  right: 5px;  /* very close to right edge */
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   #pet{
     font-size: 55px;   /* smaller cat */
   }
   #thermometer{
-     width: 35px;        /* narrower thermo (was 50px) */
-    height: 180px;      /* slightly shorter for balance */
+     width: 28px;        /* narrower thermo (was 50px) */
+    height: 170px;      /* slightly shorter for balance */
     border-radius: 18px;
   }
   #mercury{
-    border-radius: 15px 15px 0 0; /* match new width */
+    border-radius: 12px 12px 0 0; /* match new width */
   }
    #thermoNumber{
     font-size: 11px;    /* smaller text under thermometer */
@@ -201,10 +201,10 @@ button#endDay:hover {
     margin-bottom: 5px;
   }
   .option-btn{
-    display: block;
-    width: auto;
-    margin: 4px 0;
-    padding: 5px 8px;
-    font-size: 11px;
+    display: inline-block;   /* no full width */
+    width: auto;             /* shrink to fit text */
+    margin: 4px 6px;         /* little spacing */
+    padding: 5px 10px;       /* compact look */
+    font-size: 12px;
   }
 }
