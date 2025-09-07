@@ -146,27 +146,28 @@ h1 {
   transform: scale(1.1);
 }
 
-/* ===== End day button ===== */
+/* ===== End day button - updated futuristic green ===== */
 button#endDay {
   display: block;
   margin: 30px auto;
   padding: 12px 25px;
   font-size: 16px;
   font-weight: bold;
-  color: #000;
-  background: #0ff4;
-  border: none;
+  color: #0f0;                  /* green text */
+  background: rgba(0, 50, 0, 0.5); /* dark translucent background */
+  border: 2px solid #0f0;       /* neon green border */
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,255,255,0.4);
+  box-shadow: 0 0 15px #0f0, 0 0 30px #0f0 inset; /* glow effect */
   transition: transform 0.3s, box-shadow 0.3s;
   backdrop-filter: blur(5px);
+  font-family: 'Orbitron', sans-serif;  /* futuristic font */
   position: relative;
   z-index: 5;
 }
 button#endDay:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0,255,255,0.6);
+  box-shadow: 0 0 25px #0f0, 0 0 40px #0f0 inset;
 }
 
 /* ===== Mobile adjustments ===== */
