@@ -213,17 +213,17 @@ button#endDay:hover {
   }
   #/* Speech bubble below thermo number */
   #speechBubble {
-    position: relative;
-    font-size: 10px;
-    max-width: 140px;
-    padding: 5px 8px;
-    margin-bottom: 0;
-    text-align: center;
-    color: #0f0;
-    text-shadow: 0 0 6px #0f0;
-    opacity: 0;
-    pointer-events: auto;      /* allow hovering/clicks if needed */
-  }
+  position: relative;       /* follow normal flow */
+  font-size: 10px;
+  max-width: 140px;
+  padding: 5px 8px;
+  margin-top: 5px;          /* gap below thermo number */
+  text-align: center;       /* center under thermometer */
+  color: #0f0;
+  text-shadow: 0 0 6px #0f0;
+  opacity: 0;               /* initially hidden */
+  pointer-events: auto;     /* allow interactions if needed */
+}
   .option-btn{
     display: block;
     width: 180px;              /* width of "Switch off fans/lights" */
