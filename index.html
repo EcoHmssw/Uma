@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carbon Monster Pet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Background Grid -->
   <div id="grid"></div>
 
+  <!-- Page Title -->
   <h1>🔥 Carbon Monster Pet</h1>
 
-  <div id="gameContainer">
-    <!-- Pet + Thermometer -->
-    <div id="petContainer">
-      <div id="speechBubble">Hello!</div>
-      <div id="pet">😺</div>
-      <div id="thermoContainer">
-        <div id="thermoMercury"></div>
-      </div>
-      <div id="thermoNumber">25°C</div>
+  <!-- Pet & Thermometer -->
+  <div id="petContainer">
+    <div id="speechBubble"></div>
+    <div id="pet">😺</div>
+    <div id="thermoContainer">
+      <div id="thermoMercury"></div>
     </div>
-
-    <!-- Questions -->
-    <div id="questionsContainer" class="choices">
-      <h3>What do you want to do?</h3>
-      <button class="option-btn" data-cat="1">Option A</button>
-      <button class="option-btn" data-cat="1">Option B</button>
-      <button class="option-btn" data-cat="1">Option C</button>
-    </div>
-
-    <!-- End button -->
-    <button id="endDay">End Day</button>
+    <div id="thermoNumber">25°C</div>
   </div>
 
-  <script src="game.js" defer></script>
+  <!-- Questions Container -->
+  <div class="choices" id="questions"></div>
+
+  <!-- End Day Button -->
+  <button id="endDay" onclick="endDay()">End Day</button>
+
+  <!-- Game JS -->
+  <script src="game.js"></script>
 </body>
 </html>
