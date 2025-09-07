@@ -184,7 +184,7 @@ button#endDay:hover {
   }
  #petContainer {
     position: fixed;       /* always visible */
-    top: 40px;
+    top: 80px;
     right: 0;
     display: flex;
     flex-direction: column;
@@ -206,6 +206,9 @@ button#endDay:hover {
   }
    #thermoNumber{
     font-size: 11px;    /* smaller text under thermometer */
+    text-align: center;    /* center under thermo */
+    width: 100%;           /* ensures alignment */
+    margin: 0 auto;        /* horizontal centering */
   }
   #speechBubble{
     font-size: 10px;
