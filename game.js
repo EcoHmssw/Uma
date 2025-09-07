@@ -49,20 +49,27 @@ function updatePet(btn){
     if(selected){ totalPoints += parseInt(selected.dataset.value); }
   });
 
-  // Update pet emoji
+  // Update pet emoji based on totalPoints
   const pet = document.getElementById("pet");
-  if(totalPoints < 15){ 
-    pet.textContent="😺"; 
-    pet.style.filter="drop-shadow(0 0 10px green)"; 
-  } else if(totalPoints < 40){ 
-    pet.textContent="😼"; 
-    pet.style.filter="drop-shadow(0 0 15px yellow)"; 
-  } else if(totalPoints < 70){ 
-    pet.textContent="👽"; 
-    pet.style.filter="drop-shadow(0 0 20px purple)"; 
-  } else { 
-    pet.textContent="👹"; 
-    pet.style.filter="drop-shadow(0 0 25px red)"; 
+  if(totalPoints === 0){ 
+    pet.textContent = "🌿";          // starting leaf
+    pet.style.filter="drop-shadow(0 0 10px green)";
+  }
+  else if(totalPoints < 15){ 
+    pet.textContent="😺";           // happy cat
+    pet.style.filter="drop-shadow(0 0 10px green)";
+  }
+  else if(totalPoints < 40){ 
+    pet.textContent="😼";           // mischievous cat
+    pet.style.filter="drop-shadow(0 0 15px yellow)";
+  }
+  else if(totalPoints < 70){ 
+    pet.textContent="👽";           // alien / scary
+    pet.style.filter="drop-shadow(0 0 20px purple)";
+  }
+  else { 
+    pet.textContent="👹";           // monster / angry
+    pet.style.filter="drop-shadow(0 0 25px red)";
   }
 
   // Pet pop effect only for desktop
@@ -111,4 +118,5 @@ function endDay(){
   alert(`Day ended! Total CO₂ points: ${totalPoints}\n${msg}`);
   location.reload();
 }
+
 
