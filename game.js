@@ -21,7 +21,6 @@ const questions = [
   {cat:"🌙 Sleep", q:[{t:"Early sleep, lights off",v:0,msg:"Energy saver 🌿"},{t:"Sleep with lights on",v:2,msg:"Lights use energy 💡"},{t:"All night lights+fan",v:5,msg:"High night energy 🌙"}]},
   {cat:"🍽️ Eating out", q:[{t:"Home-cooked meal",v:0,msg:"Best choice 🌿"},{t:"Restaurant vegetarian",v:3,msg:"Some footprint 🍲"},{t:"Restaurant non-veg",v:7,msg:"High carbon 🐄"}]}
 ];
-
 // ===== Display questions dynamically =====
 const qDiv = document.getElementById("questions");
 questions.forEach((block,i)=>{
@@ -31,7 +30,6 @@ questions.forEach((block,i)=>{
   });
   qDiv.innerHTML += html;
 });
-
 let currentTemp = 25;
 
 function updatePet(btn){
@@ -115,13 +113,13 @@ function updatePet(btn){
   setTimeout(()=>{ bubble.style.opacity=0; }, 3000);
 }
 
-// End day button
 function endDay(){
   let totalPoints = 0;
   questions.forEach((block,i)=>{
     const selected = document.querySelector(`.option-btn[data-cat='${i}'].selected`);
     if(selected){ totalPoints += parseInt(selected.dataset.value); }
   });
+
   let msg="";
   if(totalPoints<15) msg="Your pet stayed cute 🌿!";
   else if(totalPoints<40) msg="Your pet is growing suspicious 👽!";
@@ -131,4 +129,6 @@ function endDay(){
   alert(`Day ended! Total CO₂ points: ${totalPoints}\n${msg}`);
   location.reload();
 }
+
+
 
