@@ -169,11 +169,15 @@ button#endDay:hover {
   box-shadow: 0 6px 14px rgba(0,255,255,0.6);
 }
 
-/* ===== Mobile adjustments ===== */
 @media screen and (max-width: 768px){
   #petContainer{
-    right: 10px;
-    top: auto;
+    position: sticky;
+    top: 10px; /* sticks near the top of scrolling container */
+    right: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   #pet{
     font-size: 70px;
@@ -182,6 +186,7 @@ button#endDay:hover {
     font-size: 10px;
     max-width: 140px;
     padding: 5px 8px;
+    margin-bottom: 5px;
   }
   .option-btn{
     display: block;
