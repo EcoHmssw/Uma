@@ -82,18 +82,14 @@ function updatePet(btn){
   else { thermo.style.background="linear-gradient(to top, red, darkred)"; }
   thermoNum.textContent = currentTemp+"°C";
 
-  // Show speech bubble above the pet
-  const bubble = document.getElementById("speechBubble");
-  bubble.textContent = btn.dataset.msg;
-  bubble.style.opacity = 1;
-  bubble.style.top = "-40px"; // always above the pet
-  bubble.style.left = "50%";
-  bubble.style.transform = "translateX(-50%)";
+  // Show speech bubble below thermometer
+const bubble = document.getElementById("speechBubble");
+bubble.textContent = btn.dataset.msg;
+bubble.style.opacity = 1;
 
-  // Hide bubble after 3s
-  clearTimeout(bubble.hideTimeout);
-  bubble.hideTimeout = setTimeout(()=>{ bubble.style.opacity=0; }, 3000);
-}
+// Hide bubble after 3s
+clearTimeout(bubble.hideTimeout);
+bubble.hideTimeout = setTimeout(() => { bubble.style.opacity = 0; }, 3000);
 
 function endDay(){
   let totalPoints = 0;
@@ -111,3 +107,4 @@ function endDay(){
   alert(`Day ended! Total CO₂ points: ${totalPoints}\n${msg}`);
   location.reload();
 }
+
