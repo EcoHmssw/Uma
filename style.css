@@ -174,7 +174,7 @@ button#endDay:hover {
   #petContainer{
     position: sticky;
     top: 10px;
-    right: 25px;   /* further right */
+    right: 15px;   /* further right */
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -184,11 +184,15 @@ button#endDay:hover {
     font-size: 55px;   /* smaller cat */
   }
   #thermometer{
-    width: 18px;       /* narrower thermo */
-    height: 120px;     /* shorter thermo */
+     width: 35px;        /* narrower thermo (was 50px) */
+    height: 180px;      /* slightly shorter for balance */
+    border-radius: 18px;
   }
   #mercury{
-    width: 12px;       /* thinner mercury */
+    border-radius: 15px 15px 0 0; /* match new width */
+  }
+   #thermoNumber{
+    font-size: 11px;    /* smaller text under thermometer */
   }
   #speechBubble{
     font-size: 10px;
@@ -199,8 +203,8 @@ button#endDay:hover {
   .option-btn{
     display: block;
     width: auto;
-    margin: 5px 0;
-    padding: 8px 12px;
-    font-size: 12px;
+    margin: 4px 0;
+    padding: 5px 8px;
+    font-size: 11px;
   }
 }
