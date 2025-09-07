@@ -171,16 +171,28 @@ button#endDay:hover {
 
 /* ===== Mobile adjustments ===== */
 @media screen and (max-width: 768px){
- #petContainer{
-  position: sticky;
-  top: 40px;         /* distance from top */
-    right: 0;          /* flush against the right edge */
-    margin: 0;         /* remove extra margin */
-   display: flex;
-  flex-direction: column;
-  align-items: flex-end;  /* align children to the right */
-  padding-right: 5px; /* tiny breathing space from screen edge */
-}
+#gameContainer {
+    background: black;
+    padding: 10px;
+    border-radius: 8px;
+    width: 95%;           /* narrower on small screens */
+    max-width: 350px;     /* shrink the black area */
+    margin: 15px auto;    /* center it */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* make questions left aligned */
+  }
+ #petContainer {
+    position: fixed;       /* always visible */
+    top: 40px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 5px;
+    z-index: 1000;         /* above everything visually */
+    pointer-events: none;  /* allows clicks to pass through */
+  }
   #pet{
     font-size: 75px;   /* increased pet size */
   }
