@@ -32,7 +32,6 @@ h1 {
   margin-bottom: 30px;
   position: relative;
   z-index: 1;
-  font-size: 36px;
 }
 
 /* ===== Pet and speech bubble ===== */
@@ -50,14 +49,16 @@ h1 {
 }
 #speechBubble {
   position: relative;
-  background: rgba(0,255,255,0.15);
-  color: #0ff;
+  background: rgba(0,255,0,0.15);
+  color: #0f0;
   padding: 10px 15px;
   border-radius: 15px;
   margin-bottom: 15px;
   max-width: 220px;
   opacity: 0;
   font-size: 14px;
+  font-family: 'VT323', monospace;
+  text-shadow: 0 0 5px #0f0;
   transition: opacity 0.5s;
 }
 #speechBubble::after {
@@ -67,7 +68,7 @@ h1 {
   left: 20px;
   border-width: 10px 10px 0 10px;
   border-style: solid;
-  border-color: rgba(0,255,255,0.15) transparent transparent transparent;
+  border-color: rgba(0,255,0,0.15) transparent transparent transparent;
 }
 
 /* ===== Thermometer ===== */
@@ -113,7 +114,6 @@ h1 {
 .choices h3 {
   margin-top: 15px;
   color: #00ffff;
-  font-size: 18px;
 }
 .option-btn {
   display: inline-block;
@@ -127,6 +127,7 @@ h1 {
   transition: transform 0.3s, background 0.3s, filter 0.3s;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(0,255,255,0.2);
+  white-space: nowrap;
 }
 .option-btn:hover {
   transform: scale(1.1);
@@ -163,4 +164,29 @@ button#endDay {
 button#endDay:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 14px rgba(0,255,255,0.6);
+}
+
+/* ===== Mobile responsiveness ===== */
+@media (max-width: 768px) {
+  #petContainer {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-bottom: 20px;
+  }
+  #pet { font-size: 80px; }
+  #speechBubble { font-size: 12px; max-width: 180px; }
+  .choices h3 { font-size: 16px; }
+  .option-btn {
+    display: block;
+    margin: 6px auto;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  #thermoContainer {
+    margin: 20px auto;
+    height: 180px;
+    width: 40px;
+  }
+  #thermoNumber { font-size: 14px; }
 }
