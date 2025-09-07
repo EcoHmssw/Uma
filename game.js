@@ -22,7 +22,7 @@ const questions = [
   {cat:"🍽️ Eating out", q:[{t:"Home-cooked meal",v:0,msg:"Best choice 🌿"},{t:"Restaurant vegetarian",v:3,msg:"Some footprint 🍲"},{t:"Restaurant non-veg",v:7,msg:"High carbon 🐄"}]}
 ];
 
-// Display questions dynamically
+// ===== Display questions dynamically =====
 const qDiv = document.getElementById("questions");
 questions.forEach((block,i)=>{
   let html = `<h3>${block.cat}</h3>`;
@@ -34,6 +34,7 @@ questions.forEach((block,i)=>{
 
 let currentTemp = 25;
 
+// ===== Update pet, thermometer, and speech bubble =====
 function updatePet(btn){
   const cat = btn.dataset.cat;
   const value = parseInt(btn.dataset.value);
@@ -74,7 +75,7 @@ function updatePet(btn){
   // Update thermometer
   const thermo = document.getElementById("thermoMercury");
   const thermoNum = document.getElementById("thermoNumber");
-  let currentTemp = 25 + totalPoints;
+  currentTemp = 25 + totalPoints;
   let heightPercent = Math.min((currentTemp-25)*2,100);
   thermo.style.height = heightPercent+"%";
   if(heightPercent < 40){ thermo.style.background="linear-gradient(to top, green, lime)"; }
@@ -83,14 +84,16 @@ function updatePet(btn){
   thermoNum.textContent = currentTemp+"°C";
 
   // Show speech bubble below thermometer
-const bubble = document.getElementById("speechBubble");
-bubble.textContent = btn.dataset.msg;
-bubble.style.opacity = 1;
+  const bubble = document.getElementById("speechBubble");
+  bubble.textContent = btn.dataset.msg;
+  bubble.style.opacity = 1;
 
-// Hide bubble after 3s
-clearTimeout(bubble.hideTimeout);
-bubble.hideTimeout = setTimeout(() => { bubble.style.opacity = 0; }, 3000);
+  // Hide bubble after 3s
+  clearTimeout(bubble.hideTimeout);
+  bubble.hideTimeout = setTimeout(() => { bubble.style.opacity = 0; }, 3000);
+}
 
+// ===== End Day & Restart =====
 function endDay() {
   let totalPoints = 0;
   questions.forEach((block,i)=>{
@@ -107,7 +110,7 @@ function endDay() {
   // Show the message in the end-day box
   const box = document.getElementById("endDayBox");
   const text = document.getElementById("endDayText");
-  text.innerHTML = msg;       // only show the pet message
+  text.innerHTML = msg;
   box.style.display = "block";
 
   // Hide the original end-day button
