@@ -49,9 +49,10 @@ h1 {
   transition: transform 0.3s, filter 0.5s;
   filter: drop-shadow(0 0 10px #0f0);
 }
+
 /* ===== Desktop: speech bubble above the pet ===== */
 #speechBubble {
-  position: absolute;          /* stays above pet */
+  position: absolute;
   background: rgba(0,255,0,0.15);
   color: #0f0;
   padding: 8px 12px;
@@ -73,6 +74,7 @@ h1 {
   border-style: solid;
   border-color: rgba(0,255,0,0.15) transparent transparent transparent;
 }
+
 /* ===== Thermometer ===== */
 #thermoContainer {
   width: 50px;
@@ -144,22 +146,22 @@ h1 {
   transform: scale(1.1);
 }
 
-/* ===== End day button - updated futuristic green ===== */
+/* ===== End day button ===== */
 button#endDay {
   display: block;
   margin: 30px auto;
   padding: 12px 25px;
   font-size: 16px;
   font-weight: bold;
-  color: #0f0;                  /* green text */
-  background: rgba(0, 50, 0, 0.5); /* dark translucent background */
-  border: 2px solid #0f0;       /* neon green border */
+  color: #0f0;
+  background: rgba(0, 50, 0, 0.5);
+  border: 2px solid #0f0;
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 0 15px #0f0, 0 0 30px #0f0 inset; /* glow effect */
+  box-shadow: 0 0 15px #0f0, 0 0 30px #0f0 inset;
   transition: transform 0.3s, box-shadow 0.3s;
   backdrop-filter: blur(5px);
-  font-family: 'Orbitron', sans-serif;  /* futuristic font */
+  font-family: 'Orbitron', sans-serif;
   position: relative;
   z-index: 5;
 }
@@ -169,66 +171,74 @@ button#endDay:hover {
 }
 
 /* ===== Mobile adjustments ===== */
-@media screen and (max-width: 768px){
-#questions {
+@media screen and (max-width: 768px) {
+
+  #questions {
     background: black;
     padding: 10px;
     border-radius: 8px;
-    width: 95%;           /* narrower on small screens */
-    max-width: 350px;     /* shrink the black area */
-    margin: 15px auto;    /* center it */
+    width: 95%;
+    max-width: 350px;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;  /* make questions left aligned */
+    align-items: flex-start;
   }
- #petContainer {
-    position: fixed;       /* always visible */
+
+  #petContainer {
+    position: fixed;
     top: 80px;
     right: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding-right: 5px;
-    z-index: 1000;         /* above everything visually */
-    pointer-events: none;  /* allows clicks to pass through */
+    align-items: center;
+    padding-bottom: 40px; /* space for speech bubble */
+    z-index: 1000;
+    pointer-events: none;
   }
-  #pet{
-    font-size: 75px;   /* increased pet size */
+
+  #pet {
+    font-size: 75px;
   }
-  #thermometer{
-     width: 28px;        /* narrower thermo (was 50px) */
-    height: 170px;      /* slightly shorter for balance */
+
+  #thermoContainer {
+    width: 28px;
+    height: 170px;
     border-radius: 18px;
-    margin-bottom: 8px;       /* gap between thermo and number */
+    margin-bottom: 5px;
   }
-  #mercury{
-    border-radius: 12px 12px 0 0; /* match new width */
+
+  #thermoMercury {
+    border-radius: 12px 12px 0 0;
   }
-   #thermoNumber{
-    font-size: 11px;    /* smaller text under thermometer */
-    text-align: center;    /* center under thermo */
-    width: 100%;           /* ensures alignment */
-    margin-bottom: 8px;       /* gap for speech bubble */
+
+  #thermoNumber {
+    font-size: 11px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
   }
+
   #speechBubble {
-    position: relative;           /* below thermo */
-    margin-top: 5px;              /* gap below thermo number */
+    position: relative;
+    margin-top: 5px;  /* below thermo number */
     font-size: 10px;
     max-width: 140px;
     text-align: center;
     pointer-events: auto;
-    bottom: auto;                 /* override desktop bottom */
-    left: auto;                   /* override desktop left */
-    transform: none;              /* no translation */
+    bottom: auto;
+    left: auto;
+    transform: none;
+    color: #0f0;
   }
 
-  .option-btn{
+  .option-btn {
     display: block;
-    width: 180px;              /* width of "Switch off fans/lights" */
+    width: 180px;
     margin: 5px 0;
     padding: 8px 12px;
     font-size: 12px;
-    text-align: left;          /* keep text left-aligned */
+    text-align: left;
     box-sizing: border-box;
   }
 }
