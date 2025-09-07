@@ -32,6 +32,7 @@ h1 {
   margin-bottom: 30px;
   position: relative;
   z-index: 1;
+  font-size: 36px;
 }
 
 /* ===== Pet and speech bubble ===== */
@@ -112,6 +113,7 @@ h1 {
 .choices h3 {
   margin-top: 15px;
   color: #00ffff;
+  font-size: 18px;
 }
 .option-btn {
   display: inline-block;
