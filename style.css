@@ -200,6 +200,7 @@ button#endDay:hover {
      width: 28px;        /* narrower thermo (was 50px) */
     height: 170px;      /* slightly shorter for balance */
     border-radius: 18px;
+    margin-bottom: 8px;       /* gap between thermo and number */
   }
   #mercury{
     border-radius: 12px 12px 0 0; /* match new width */
@@ -208,19 +209,28 @@ button#endDay:hover {
     font-size: 11px;    /* smaller text under thermometer */
     text-align: center;    /* center under thermo */
     width: 100%;           /* ensures alignment */
-    margin: 0 auto;        /* horizontal centering */
+    margin-bottom: 8px;       /* gap for speech bubble */
   }
-  #speechBubble{
+  #/* Speech bubble below thermo number */
+  #speechBubble {
+    position: relative;
     font-size: 10px;
     max-width: 140px;
     padding: 5px 8px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #0f0;
+    text-shadow: 0 0 6px #0f0;
+    opacity: 0;
+    pointer-events: auto;      /* allow hovering/clicks if needed */
   }
   .option-btn{
-    display: block;      /* stack vertically */
-    width: fit-content;  /* shrink to text size, not full width */
-    margin: 6px 0 6px 12px; /* aligned left with a small indent */
-    padding: 6px 12px;
+    display: block;
+    width: 180px;              /* width of "Switch off fans/lights" */
+    margin: 5px 0;
+    padding: 8px 12px;
     font-size: 12px;
+    text-align: left;          /* keep text left-aligned */
+    box-sizing: border-box;
   }
 }
