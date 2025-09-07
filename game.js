@@ -26,7 +26,7 @@ const questions = [
 const qDiv = document.getElementById("questions");
 questions.forEach((block,i)=>{
   let html = `<h3>${block.cat}</h3>`;
-  block.q.forEach((opt,j)=>{
+  block.q.forEach((opt)=>{
     html += `<div class="option-btn" data-cat='${i}' data-value='${opt.v}' data-msg='${opt.msg}' onclick='updatePet(this)'>${opt.t}</div>`;
   });
   qDiv.innerHTML += html;
@@ -59,7 +59,6 @@ function updatePet(btn){
   else if(totalPoints < 70){ pet.textContent="👽"; pet.style.filter="drop-shadow(0 0 20px purple)"; }
   else { pet.textContent="👹"; pet.style.filter="drop-shadow(0 0 25px red)"; }
 
-  // Optional pet pop effect
   pet.style.transform = "scale(1.3)";
   setTimeout(()=>{ pet.style.transform = "scale(1)"; }, 300);
 
