@@ -1,16 +1,38 @@
-<div id="gameContainer">
-  <div id="petContainer">
-    <div id="speechBubble"></div>
-    <div id="pet">🐾</div>
-    <div id="thermoContainer">
-      <div id="thermoMercury"></div>
-      <div id="thermoNumber">0°</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carbon Monster Pet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="grid"></div>
+
+  <h1>🔥 Carbon Monster Pet</h1>
+
+  <div id="gameContainer">
+    <!-- Pet + Thermometer -->
+    <div id="petContainer">
+      <div id="speechBubble">Hello!</div>
+      <div id="pet">😺</div>
+      <div id="thermoContainer">
+        <div id="thermoMercury"></div>
+      </div>
+      <div id="thermoNumber">25°C</div>
     </div>
-  </div>
-  <div id="questionsContainer">
-    <div class="choices">
-      <!-- buttons go here -->
+
+    <!-- Questions -->
+    <div id="questionsContainer" class="choices">
+      <h3>What do you want to do?</h3>
+      <button class="option-btn" data-cat="1">Option A</button>
+      <button class="option-btn" data-cat="1">Option B</button>
+      <button class="option-btn" data-cat="1">Option C</button>
     </div>
+
+    <!-- End button -->
     <button id="endDay">End Day</button>
   </div>
-</div>
+
+  <script src="game.js" defer></script>
+</body>
+</html>
