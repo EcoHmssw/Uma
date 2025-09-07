@@ -1,4 +1,4 @@
-// All 20 questions
+// ===== All 20 questions =====
 const questions = [
   {cat:"🍲 Food", q:[{t:"Vegetarian thali",v:0,msg:"Veg is green 🌿!"},{t:"Chicken biryani",v:5,msg:"Chicken adds CO₂ 🌫️"},{t:"Mutton curry",v:8,msg:"Mutton has high emissions 🐄"}]},
   {cat:"🚗 Travel", q:[{t:"Walk / Cycle",v:0,msg:"Walking saves CO₂ 🚶‍♂️"},{t:"Bus / Metro",v:3,msg:"Public transport 🚇"},{t:"Auto / Car",v:7,msg:"Cars burn fuel 🌫️"}]},
@@ -22,6 +22,7 @@ const questions = [
   {cat:"🍽️ Eating out", q:[{t:"Home-cooked meal",v:0,msg:"Best choice 🌿"},{t:"Restaurant vegetarian",v:3,msg:"Some footprint 🍲"},{t:"Restaurant non-veg",v:7,msg:"High carbon 🐄"}]}
 ];
 
+// ===== Display questions dynamically =====
 const qDiv = document.getElementById("questions");
 questions.forEach((block,i)=>{
   let html = `<h3>${block.cat}</h3>`;
@@ -33,51 +34,54 @@ questions.forEach((block,i)=>{
 
 let currentTemp = 25;
 
+// ===== Update pet, thermometer, and speech bubble =====
 function updatePet(btn){
   const cat = btn.dataset.cat;
   const value = parseInt(btn.dataset.value);
 
+  // Highlight selected option
   document.querySelectorAll(`.option-btn[data-cat='${cat}']`).forEach(b=>b.classList.remove("selected"));
   btn.classList.add("selected");
 
+  // Calculate total points
   let totalPoints = 0;
-  let bubbleMsg = "";
   questions.forEach((block,i)=>{
     const selected = document.querySelector(`.option-btn[data-cat='${i}'].selected`);
     if(selected){
       totalPoints += parseInt(selected.dataset.value);
-      bubbleMsg = selected.dataset.msg; 
     }
   });
 
+  // Update pet emoji based on total points
   const pet = document.getElementById("pet");
-  if(value >= 5 && totalPoints < 15){
-    const prevEmoji = pet.textContent;
-    pet.textContent = "😾";
-    setTimeout(()=>{ pet.textContent = prevEmoji; },1200);
-  }
-
   if(totalPoints < 15){ pet.textContent="😺"; pet.style.filter="drop-shadow(0 0 10px green)"; }
   else if(totalPoints < 40){ pet.textContent="😼"; pet.style.filter="drop-shadow(0 0 15px yellow)"; }
   else if(totalPoints < 70){ pet.textContent="👽"; pet.style.filter="drop-shadow(0 0 20px purple)"; }
   else { pet.textContent="👹"; pet.style.filter="drop-shadow(0 0 25px red)"; }
 
+  // Optional pet pop effect
+  pet.style.transform = "scale(1.3)";
+  setTimeout(()=>{ pet.style.transform = "scale(1)"; }, 300);
+
+  // Update thermometer
   currentTemp = 25 + totalPoints;
   const thermo = document.getElementById("thermoMercury");
   const thermoNum = document.getElementById("thermoNumber");
   let heightPercent = Math.min((currentTemp-25)*2,100);
   thermo.style.height = heightPercent+"%";
-  if(heightPercent<40){ thermo.style.background="linear-gradient(to top, green, lime)"; }
-  else if(heightPercent<70){ thermo.style.background="linear-gradient(to top, yellow, orange)"; }
+  if(heightPercent < 40){ thermo.style.background="linear-gradient(to top, green, lime)"; }
+  else if(heightPercent < 70){ thermo.style.background="linear-gradient(to top, yellow, orange)"; }
   else { thermo.style.background="linear-gradient(to top, red, darkred)"; }
   thermoNum.textContent = currentTemp+"°C";
 
+  // Show only clicked button's message
   const bubble = document.getElementById("speechBubble");
-  bubble.textContent = bubbleMsg;
+  bubble.textContent = btn.dataset.msg;
   bubble.style.opacity = 1;
   setTimeout(()=>{ bubble.style.opacity=0; }, 3000);
 }
 
+// ===== End of day button =====
 function endDay(){
   let totalPoints = 0;
   questions.forEach((block,i)=>{
