@@ -26,7 +26,7 @@ const questions = [
 const qDiv = document.getElementById("questions");
 questions.forEach((block,i)=>{
   let html = `<h3>${block.cat}</h3>`;
-  block.q.forEach((opt)=>{
+  block.q.forEach((opt,j)=>{
     html += `<div class="option-btn" data-cat='${i}' data-value='${opt.v}' data-msg='${opt.msg}' onclick='updatePet(this)'>${opt.t}</div>`;
   });
   qDiv.innerHTML += html;
@@ -47,12 +47,10 @@ function updatePet(btn){
   let totalPoints = 0;
   questions.forEach((block,i)=>{
     const selected = document.querySelector(`.option-btn[data-cat='${i}'].selected`);
-    if(selected){
-      totalPoints += parseInt(selected.dataset.value);
-    }
+    if(selected){ totalPoints += parseInt(selected.dataset.value); }
   });
 
-  // Update pet emoji based on total points
+  // Update pet emoji
   const pet = document.getElementById("pet");
   if(totalPoints < 15){ pet.textContent="😺"; pet.style.filter="drop-shadow(0 0 10px green)"; }
   else if(totalPoints < 40){ pet.textContent="😼"; pet.style.filter="drop-shadow(0 0 15px yellow)"; }
@@ -73,10 +71,27 @@ function updatePet(btn){
   else { thermo.style.background="linear-gradient(to top, red, darkred)"; }
   thermoNum.textContent = currentTemp+"°C";
 
-  // Show only clicked button's message
+  // Show speech bubble
   const bubble = document.getElementById("speechBubble");
   bubble.textContent = btn.dataset.msg;
   bubble.style.opacity = 1;
+
+  // ===== Mobile-safe bubble positioning =====
+  const rect = btn.getBoundingClientRect();
+  const bubbleRect = bubble.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if(window.innerWidth <= 768){
+    // Position bubble above the button
+    bubble.style.position = 'absolute';
+    bubble.style.left = rect.left + 'px';
+    bubble.style.top = (rect.top + scrollTop - bubbleRect.height - 10) + 'px';
+  } else {
+    bubble.style.position = 'relative';
+    bubble.style.left = 'auto';
+    bubble.style.top = 'auto';
+  }
+
   setTimeout(()=>{ bubble.style.opacity=0; }, 3000);
 }
 
