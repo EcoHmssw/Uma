@@ -32,7 +32,7 @@ questions.forEach((block,i)=>{
   qDiv.innerHTML += html;
 });
 
-let currentTemp = 25;
+let currentTemp = 20;
 
 function updatePet(btn){
   const cat = btn.dataset.cat;
@@ -51,11 +51,11 @@ function updatePet(btn){
 
   // Update pet emoji based on totalPoints
   const pet = document.getElementById("pet");
-  if(totalPoints === 0){ 
+  if(totalPoints <= 25){ 
     pet.textContent = "🌿";          // starting leaf
     pet.style.filter="drop-shadow(0 0 10px green)";
   }
-  else if(totalPoints < 15){ 
+  else if(totalPoints < 30){ 
     pet.textContent="😺";           // happy cat
     pet.style.filter="drop-shadow(0 0 10px green)";
   }
@@ -63,7 +63,7 @@ function updatePet(btn){
     pet.textContent="😼";           // mischievous cat
     pet.style.filter="drop-shadow(0 0 15px yellow)";
   }
-  else if(totalPoints < 70){ 
+  else if(totalPoints < 45){ 
     pet.textContent="👽";           // alien / scary
     pet.style.filter="drop-shadow(0 0 20px purple)";
   }
@@ -81,7 +81,7 @@ function updatePet(btn){
   // Update thermometer
   const thermo = document.getElementById("thermoMercury");
   const thermoNum = document.getElementById("thermoNumber");
-  let currentTemp = 25 + totalPoints;
+  let currentTemp = 20 + totalPoints;
   let heightPercent = Math.min((currentTemp-25)*2,100);
   thermo.style.height = heightPercent+"%";
   if(heightPercent < 40){ thermo.style.background="linear-gradient(to top, green, lime)"; }
@@ -110,13 +110,15 @@ function endDay(){
   });
 
   let msg="";
-  if(totalPoints<15) msg="Your pet stayed cute 🌿!";
-  else if(totalPoints<40) msg="Your pet is growing suspicious 👽!";
-  else if(totalPoints<70) msg="Your pet turned into an alien 👽!";
+  if(totalPoints<=25) msg="Your pet stayed cute 🌿!";
+  else if(totalPoints<30) msg="Your pet is growing suspicious 😺!";
+  else if(totalPoints<40) msg="Your pet is growing suspicious 😼!";
+  else if(totalPoints<45) msg="Your pet turned into an alien 👽!";
   else msg="Your monster exploded! 👹🔥";
 
   alert(`Day ended! Total CO₂ points: ${totalPoints}\n${msg}`);
   location.reload();
 }
+
 
 
