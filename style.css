@@ -49,28 +49,27 @@ h1 {
   transition: transform 0.3s, filter 0.5s;
   filter: drop-shadow(0 0 10px #0f0);
 }
-
+/* ===== Desktop: speech bubble above the pet ===== */
 #speechBubble {
-  position: relative;       /* follow normal flow below thermoNumber */
-  font-size: 10px;
-  max-width: 140px;
-  padding: 5px 8px;
-  margin-top: 5px;          /* gap below thermo number */
-  text-align: center;       /* center under thermo number */
+  position: absolute;          /* stays above pet */
+  background: rgba(0,255,0,0.15);
   color: #0f0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 180px;
+  opacity: 0;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
   text-shadow: 0 0 6px #0f0;
-  opacity: 0;               /* initially hidden */
-  pointer-events: auto;     /* allow interactions if needed */
-  transform: none;          /* remove absolute transform from desktop */
+  transition: opacity 0.3s, top 0.3s, left 0.3s;
+  pointer-events: none;
 }
 #speechBubble::after {
   content: '';
   position: absolute;
-  bottom: auto;             /* remove arrow below */
-  top: -5px;                /* optional: small arrow above bubble */
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px 5px 0 5px;
+  bottom: -8px;
+  left: 20px;
+  border-width: 8px 8px 0 8px;
   border-style: solid;
   border-color: rgba(0,255,0,0.15) transparent transparent transparent;
 }
@@ -212,19 +211,17 @@ button#endDay:hover {
     margin-bottom: 8px;       /* gap for speech bubble */
   }
   #speechBubble {
-  position: relative;       /* normal flow */
-  font-size: 14px;
-  max-width: 180px;
-  margin: 5px auto 15px auto; /* spacing below thermoNumber */
-  text-align: center;
-  color: #0f0;
-  text-shadow: 0 0 6px #0f0;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-#speechBubble::after {
-  display: none;  /* remove arrow for simplicity */
-}
+    position: relative;           /* below thermo */
+    margin-top: 5px;              /* gap below thermo number */
+    font-size: 10px;
+    max-width: 140px;
+    text-align: center;
+    pointer-events: auto;
+    bottom: auto;                 /* override desktop bottom */
+    left: auto;                   /* override desktop left */
+    transform: none;              /* no translation */
+  }
+
   .option-btn{
     display: block;
     width: 180px;              /* width of "Switch off fans/lights" */
