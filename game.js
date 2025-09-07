@@ -38,6 +38,7 @@ function updatePet(btn){
   const cat = btn.dataset.cat;
   const value = parseInt(btn.dataset.value);
 
+  // Highlight selected option
   document.querySelectorAll(`.option-btn[data-cat='${cat}']`).forEach(b=>b.classList.remove("selected"));
   btn.classList.add("selected");
 
@@ -50,18 +51,33 @@ function updatePet(btn){
 
   // Update pet emoji
   const pet = document.getElementById("pet");
-  if(totalPoints < 15){ pet.textContent="😺"; pet.style.filter="drop-shadow(0 0 10px green)"; }
-  else if(totalPoints < 40){ pet.textContent="😼"; pet.style.filter="drop-shadow(0 0 15px yellow)"; }
-  else if(totalPoints < 70){ pet.textContent="👽"; pet.style.filter="drop-shadow(0 0 20px purple)"; }
-  else { pet.textContent="👹"; pet.style.filter="drop-shadow(0 0 25px red)"; }
+  if(totalPoints < 15){ 
+    pet.textContent="😺"; 
+    pet.style.filter="drop-shadow(0 0 10px green)"; 
+  }
+  else if(totalPoints < 40){ 
+    pet.textContent="😼"; 
+    pet.style.filter="drop-shadow(0 0 15px yellow)"; 
+  }
+  else if(totalPoints < 70){ 
+    pet.textContent="👽"; 
+    pet.style.filter="drop-shadow(0 0 20px purple)"; 
+  }
+  else { 
+    pet.textContent="👹"; 
+    pet.style.filter="drop-shadow(0 0 25px red)"; 
+  }
 
-  pet.style.transform = "scale(1.3)";
-  setTimeout(()=>{ pet.style.transform = "scale(1)"; }, 300);
+  // Pet pop effect only for desktop
+  if(window.innerWidth > 768){
+    pet.style.transform = "scale(1.3)";
+    setTimeout(()=>{ pet.style.transform = "scale(1)"; }, 300);
+  }
 
   // Update thermometer
-  currentTemp = 25 + totalPoints;
   const thermo = document.getElementById("thermoMercury");
   const thermoNum = document.getElementById("thermoNumber");
+  let currentTemp = 25 + totalPoints;
   let heightPercent = Math.min((currentTemp-25)*2,100);
   thermo.style.height = heightPercent+"%";
   if(heightPercent < 40){ thermo.style.background="linear-gradient(to top, green, lime)"; }
@@ -69,10 +85,15 @@ function updatePet(btn){
   else { thermo.style.background="linear-gradient(to top, red, darkred)"; }
   thermoNum.textContent = currentTemp+"°C";
 
-  // ===== Speech bubble =====
+  // Show speech bubble above the pet
   const bubble = document.getElementById("speechBubble");
   bubble.textContent = btn.dataset.msg;
   bubble.style.opacity = 1;
+  bubble.style.top = "-40px"; // always above the pet
+  bubble.style.left = "50%";
+  bubble.style.transform = "translateX(-50%)";
+  setTimeout(()=>{ bubble.style.opacity=0; }, 3000);
+}
 
   // Reposition bubble to avoid collision
   const rect = btn.getBoundingClientRect();
@@ -110,3 +131,4 @@ function endDay(){
   alert(`Day ended! Total CO₂ points: ${totalPoints}\n${msg}`);
   location.reload();
 }
+
