@@ -172,7 +172,7 @@ button#endDay:hover {
 
 /* ===== Mobile adjustments ===== */
 @media screen and (max-width: 768px){
-#gameContainer {
+#questions {
     background: black;
     padding: 10px;
     border-radius: 8px;
