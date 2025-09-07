@@ -91,20 +91,29 @@ bubble.style.opacity = 1;
 clearTimeout(bubble.hideTimeout);
 bubble.hideTimeout = setTimeout(() => { bubble.style.opacity = 0; }, 3000);
 
-function endDay(){
+function endDay() {
   let totalPoints = 0;
   questions.forEach((block,i)=>{
     const selected = document.querySelector(`.option-btn[data-cat='${i}'].selected`);
     if(selected){ totalPoints += parseInt(selected.dataset.value); }
   });
 
-  let msg="";
-  if(totalPoints<15) msg="Your pet stayed cute 🌿!";
-  else if(totalPoints<40) msg="Your pet is growing suspicious 👽!";
-  else if(totalPoints<70) msg="Your pet turned into an alien 👽!";
-  else msg="Your monster exploded! 👹🔥";
+  let msg = "";
+  if(totalPoints < 15) msg = "😺 Your pet stayed cute!";
+  else if(totalPoints < 40) msg = "😼 Your pet is angry!";
+  else if(totalPoints < 70) msg = "👽 Your pet turned into an alien!";
+  else msg = "👹 Your monster exploded!";
 
-  alert(`Day ended! Total CO₂ points: ${totalPoints}\n${msg}`);
-  location.reload();
+  // Show the message in the end-day box
+  const box = document.getElementById("endDayBox");
+  const text = document.getElementById("endDayText");
+  text.innerHTML = msg;       // only show the pet message
+  box.style.display = "block";
+
+  // Hide the original end-day button
+  document.getElementById("endDay").style.display = "none";
 }
 
+function restartDay() {
+  location.reload();
+}
